@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentistSpace.Data", "Data\D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentistSpace.Data.Models", "Data\DentistSpace.Data.Models\DentistSpace.Data.Models.csproj", "{A6CB0045-6F33-4752-AF57-B30557056FBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentistSpace.Services", "Services\DentistSpace.Services\DentistSpace.Services.csproj", "{9196AF52-4479-444A-8863-44606B93F289}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentistSpace.Services.Data", "Services\DentistSpace.Services\DentistSpace.Services.Data.csproj", "{9196AF52-4479-444A-8863-44606B93F289}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentistSpace.Web", "Web\DentistSpace.Web\DentistSpace.Web.csproj", "{25C7F073-98A6-4764-8780-C01D4F484CBA}"
 EndProject
@@ -22,6 +22,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentistSpace.Web.Models", "Web\DentistSpace.Web.Models\DentistSpace.Web.Models.csproj", "{85B35521-6380-4C41-90E8-3D1CF75696E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentistSpace.Web.Infrastructure", "Web\DentistSpace.Web.Infrastructure\DentistSpace.Web.Infrastructure.csproj", "{27C41AD1-BBA2-4289-A76D-6BF26526151C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentistSpace.Data.Common", "Data\DentistSpace.Data.Common\DentistSpace.Data.Common.csproj", "{78921D2E-B4CA-4225-9D68-F3B3D8E0DD04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentistSpace.Services.Web", "Services\DentistSpace.Services.Web\DentistSpace.Services.Web.csproj", "{1280FF34-F14C-480F-8902-7038CF7012CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,14 @@ Global
 		{27C41AD1-BBA2-4289-A76D-6BF26526151C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27C41AD1-BBA2-4289-A76D-6BF26526151C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27C41AD1-BBA2-4289-A76D-6BF26526151C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78921D2E-B4CA-4225-9D68-F3B3D8E0DD04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78921D2E-B4CA-4225-9D68-F3B3D8E0DD04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78921D2E-B4CA-4225-9D68-F3B3D8E0DD04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78921D2E-B4CA-4225-9D68-F3B3D8E0DD04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1280FF34-F14C-480F-8902-7038CF7012CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1280FF34-F14C-480F-8902-7038CF7012CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1280FF34-F14C-480F-8902-7038CF7012CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1280FF34-F14C-480F-8902-7038CF7012CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,5 +76,7 @@ Global
 		{25C7F073-98A6-4764-8780-C01D4F484CBA} = {8F946D89-AD7B-4997-8640-C2398FFCF1B6}
 		{85B35521-6380-4C41-90E8-3D1CF75696E8} = {8F946D89-AD7B-4997-8640-C2398FFCF1B6}
 		{27C41AD1-BBA2-4289-A76D-6BF26526151C} = {8F946D89-AD7B-4997-8640-C2398FFCF1B6}
+		{78921D2E-B4CA-4225-9D68-F3B3D8E0DD04} = {BBBC59B4-EE57-477C-ADD2-2EEB3A0583BF}
+		{1280FF34-F14C-480F-8902-7038CF7012CD} = {786A048C-ABEC-4215-91F7-61B2854B7C71}
 	EndGlobalSection
 EndGlobal

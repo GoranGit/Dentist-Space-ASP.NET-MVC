@@ -206,13 +206,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DatabaseConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Dentists\DentistsAreaRegistration.cs" />
+    <Compile Include="Areas\Patients\PatientsAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
@@ -259,6 +264,9 @@
     <Content Include="font\roboto\Roboto-Thin.ttf" />
     <Content Include="font\roboto\Roboto-Thin.woff" />
     <Content Include="font\roboto\Roboto-Thin.woff2" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Dentists\Views\web.config" />
+    <Content Include="Areas\Patients\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -310,6 +318,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Dentists\Controllers\" />
+    <Folder Include="Areas\Dentists\Models\" />
+    <Folder Include="Areas\Dentists\Views\Shared\" />
+    <Folder Include="Areas\Patients\Controllers\" />
+    <Folder Include="Areas\Patients\Models\" />
+    <Folder Include="Areas\Patients\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
@@ -329,9 +346,13 @@
       <Project>{502837bc-2b97-44ef-ad35-83fd17da0c1d}</Project>
       <Name>DentistSpace.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Services\DentistSpace.Services\DentistSpace.Services.csproj">
+    <ProjectReference Include="..\..\Services\DentistSpace.Services.Web\DentistSpace.Services.Web.csproj">
+      <Project>{1280ff34-f14c-480f-8902-7038cf7012cd}</Project>
+      <Name>DentistSpace.Services.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\DentistSpace.Services\DentistSpace.Services.Data.csproj">
       <Project>{9196af52-4479-444a-8863-44606b93f289}</Project>
-      <Name>DentistSpace.Services</Name>
+      <Name>DentistSpace.Services.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\DentistSpace.Web.Infrastructure\DentistSpace.Web.Infrastructure.csproj">
       <Project>{27c41ad1-bba2-4289-a76d-6bf26526151c}</Project>
