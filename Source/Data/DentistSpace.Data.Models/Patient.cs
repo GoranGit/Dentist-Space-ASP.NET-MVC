@@ -1,9 +1,10 @@
 ﻿namespace DentistSpace.Data.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using Common.Models;
 
-    public class Patient : BaseModel<int>
+    public class Patient : BaseModel<string>
     {
         private ICollection<Dentist> dentists;
         private ICollection<MedicalRecord> medicalRecords;
@@ -15,6 +16,20 @@
         }
 
         public bool IsAccepted { get; set; }
+
+        [ForeignKey("User")]
+        public override string Id
+        {
+            get
+            {
+                return base.Id;
+            }
+
+            set
+            {
+                base.Id = value;
+            }
+        }
 
         public virtual User User { get; set; }
 

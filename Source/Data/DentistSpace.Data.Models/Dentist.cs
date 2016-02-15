@@ -2,9 +2,10 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using Common.Models;
 
-    public class Dentist : BaseModel<int>
+    public class Dentist : BaseModel<string>
     {
         private ICollection<Patient> patients;
         private ICollection<Post> posts;
@@ -15,6 +16,20 @@
             this.patients = new HashSet<Patient>();
             this.posts = new HashSet<Post>();
             this.medicalRecords = new HashSet<MedicalRecord>();
+        }
+
+        [ForeignKey("User")]
+        public override string Id
+        {
+            get
+            {
+                return base.Id;
+            }
+
+            set
+            {
+                base.Id = value;
+            }
         }
 
         public virtual User User { get; set; }

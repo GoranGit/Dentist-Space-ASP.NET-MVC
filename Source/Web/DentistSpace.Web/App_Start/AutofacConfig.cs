@@ -1,14 +1,14 @@
-﻿using System.Data.Entity;
-using System.Reflection;
-using System.Web.Mvc;
-using Autofac;
-using Autofac.Integration.Mvc;
-using DentistSpace.Data;
-using DentistSpace.Services.Web;
-using DentistSpace.Web.Controllers;
-
-namespace DentistSpace.Web.App_Start
+﻿namespace DentistSpace.Web.App_Start
 {
+    using System.Data.Entity;
+    using System.Reflection;
+    using System.Web.Mvc;
+    using Autofac;
+    using Autofac.Integration.Mvc;
+    using DentistSpace.Data;
+    using DentistSpace.Services.Web;
+    using DentistSpace.Web.Controllers;
+
     public static class AutofacConfig
     {
         public static void RegisterAutofac()
@@ -51,12 +51,12 @@ namespace DentistSpace.Web.App_Start
                 .As<IIdentifierProvider>()
                 .InstancePerRequest();
 
-           // var servicesAssembly = Assembly.GetAssembly(typeof(IJokesService));
+            //var servicesAssembly = Assembly.GetAssembly(typeof(IJokesService));
             //builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
 
-           // builder.RegisterGeneric(typeof(DbRepository<>))
-             //   .As(typeof(IDbRepository<>))
-             //   .InstancePerRequest();
+            builder.RegisterGeneric(typeof(DbRepository<>))
+            .As(typeof(IDbRepository<>))
+            .InstancePerRequest();
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseController>().PropertiesAutowired();

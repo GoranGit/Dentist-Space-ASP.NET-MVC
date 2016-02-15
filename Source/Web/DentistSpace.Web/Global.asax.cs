@@ -4,12 +4,14 @@
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
+    using DentistSpace.Web.Infrastructure.Constants;
     using DentistSpace.Web.Infrastructure.Mapping;
 
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
+            ViewEngineConfig.Init();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
@@ -17,7 +19,7 @@
             DatabaseConfig.Initialize();
 
             var autoMapperConfig = new AutoMapperConfig();
-            autoMapperConfig.Execute(Assembly.GetExecutingAssembly());
+            autoMapperConfig.Execute(Assembly.Load(AssemblyConstants.WebModels));
         }
     }
 }
