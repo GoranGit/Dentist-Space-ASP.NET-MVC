@@ -1,13 +1,15 @@
-﻿namespace DentistSpace.Web.App_Start
-{
+﻿namespace DentistSpace.Web
+{ 
     using System.Data.Entity;
     using System.Reflection;
     using System.Web.Mvc;
     using Autofac;
     using Autofac.Integration.Mvc;
     using DentistSpace.Data;
+    using Services.Contracts;
     using DentistSpace.Services.Web;
     using DentistSpace.Web.Controllers;
+    using Infrastructure.Constants;
 
     public static class AutofacConfig
     {
@@ -42,17 +44,19 @@
         private static void RegisterServices(ContainerBuilder builder)
         {
             builder.Register(x => new DentistSpaceDbContext())
-                .As<DbContext>()
+                .As<IDentistSpaceDbContext>()
                 .InstancePerRequest();
+
             builder.Register(x => new HttpCacheService())
                 .As<ICacheService>()
                 .InstancePerRequest();
+
             builder.Register(x => new IdentifierProvider())
                 .As<IIdentifierProvider>()
                 .InstancePerRequest();
 
-            //var servicesAssembly = Assembly.GetAssembly(typeof(IJokesService));
-            //builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
+            var servicesAssembly = Assembly.GetAssembly(typeof(IPostService));
+            builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
 
             builder.RegisterGeneric(typeof(DbRepository<>))
             .As(typeof(IDbRepository<>))

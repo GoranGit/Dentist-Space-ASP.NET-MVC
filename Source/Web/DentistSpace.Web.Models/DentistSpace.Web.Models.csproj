@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -106,6 +110,7 @@
     <Compile Include="Account\ResetPasswordViewModel.cs" />
     <Compile Include="Account\SendCodeViewModel.cs" />
     <Compile Include="Account\VerifyCodeViewModel.cs" />
+    <Compile Include="Home\PostViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Manage\ChangePasswordViewModel.cs" />
     <Compile Include="Manage\ConfigureTwoFactorViewModel.cs" />
@@ -124,6 +129,21 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\DentistSpace.Data.Common\DentistSpace.Data.Common.csproj">
+      <Project>{78921d2e-b4ca-4225-9d68-f3b3d8e0dd04}</Project>
+      <Name>DentistSpace.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\DentistSpace.Data.Models\DentistSpace.Data.Models.csproj">
+      <Project>{a6cb0045-6f33-4752-af57-b30557056fbc}</Project>
+      <Name>DentistSpace.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DentistSpace.Web.Infrastructure\DentistSpace.Web.Infrastructure.csproj">
+      <Project>{27c41ad1-bba2-4289-a76d-6bf26526151c}</Project>
+      <Name>DentistSpace.Web.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

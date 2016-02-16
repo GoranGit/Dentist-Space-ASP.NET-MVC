@@ -1,5 +1,23 @@
-﻿@{
+﻿@model  IEnumerable <DentistSpace.Web.Models.Home.PostViewModel>
+
+@{
     ViewBag.Title = "Home Page";
+}
+
+@foreach (var k in Model)
+{
+    <div>
+        @k.Content
+    </div>
+    <div>
+        @k.CreatedOn
+    </div>
+    <div>
+        @k.ImageUrl
+    </div>
+    <div>
+        @k.Url
+    </div>
 }
 
 <div class="jumbotron">

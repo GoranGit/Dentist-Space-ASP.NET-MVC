@@ -1,13 +1,14 @@
 namespace DentistSpace.Data.Migrations
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity.Migrations;
     using System.Linq;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
 
-    public sealed class Configuration : DbMigrationsConfiguration<DentistSpace.Data.DentistSpaceDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<DentistSpaceDbContext>
     {
         public Configuration()
         {
@@ -15,15 +16,14 @@ namespace DentistSpace.Data.Migrations
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(DentistSpace.Data.DentistSpaceDbContext context)
+        protected override void Seed(DentistSpaceDbContext context)
         {
             this.SeedRoles(context);
-
             var admin = this.SeedAdmin(context);
             var dentist = this.SeedDentists(context);
             var patient = this.SeedPatient(context, dentist);
-            this.SeedPosts(context, dentist);
-
+            var categories = this.SeedCategories(context);
+            this.SeedPosts(context, dentist, categories);
             context.SaveChanges();
         }
 
@@ -112,7 +112,7 @@ namespace DentistSpace.Data.Migrations
 
         private Patient SeedPatient(DentistSpaceDbContext context, Dentist dentist)
         {
-            if (!(context.Users.Count() > 1))
+            if (!(context.Users.Count() > 2))
             {
                 var userManager = new UserManager<User>(new UserStore<User>(context));
                 var patient = new User()
@@ -143,17 +143,39 @@ namespace DentistSpace.Data.Migrations
             return null;
         }
 
-        private void SeedPosts(DentistSpaceDbContext context, Dentist dentist)
+        private void SeedPosts(DentistSpaceDbContext context, Dentist dentist, IList<Category> categories)
         {
             if (context.Posts.Count() == 0)
             {
-                for (var i = 0; i < 30; i++)
+                foreach (Category category in categories)
                 {
-                    context.Posts.Add(new Post() { Content = "Test content" + i, CreatedOn = DateTime.Now, Dentist = dentist, IsDeleted = false, IsPublic = true });
+                    for (var i = 0; i < 5; i++)
+                    {
+                        context.Posts.Add(new Post() { Content = "Test content" + i, CreatedOn = DateTime.Now, Dentist = dentist, IsDeleted = false, CategoryId = category.Id, IsPublic = true });
+                    }
                 }
 
                 context.SaveChanges();
             }
+        }
+
+        private IList<Category> SeedCategories(DentistSpaceDbContext context)
+        {
+            var listCategories = new List<Category>();
+
+            if (context.Categories.Count() == 0)
+            {
+                for (var i = 0; i < 10; i++)
+                {
+                    var category = new Category() { Name = "Category " + i, CreatedOn = DateTime.Now };
+                    context.Categories.Add(category);
+                    listCategories.Add(category);
+                }
+
+                context.SaveChanges();
+            }
+
+            return listCategories;
         }
     }
 }

@@ -14,6 +14,8 @@ using DentistSpace.Web.Models;
 using DentistSpace.Data.Models;
 using DentistSpace.Data;
 
+using DentistSpace.Services.Web;
+
 namespace DentistSpace.Web
 {
     public class EmailService : IIdentityMessageService
@@ -21,7 +23,13 @@ namespace DentistSpace.Web
         public Task SendAsync(IdentityMessage message)
         {
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            return ConfigSendAsync(message);
+            // return Task.FromResult(0);
+        }
+
+        private async Task ConfigSendAsync(IdentityMessage message)
+        {
+           await Mailer.GetMailer().Send(message.Destination, message.Subject, message.Body);
         }
     }
 

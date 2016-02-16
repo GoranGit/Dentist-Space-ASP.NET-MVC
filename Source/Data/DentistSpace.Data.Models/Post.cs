@@ -22,9 +22,15 @@
         [Index]
         public bool IsPublic { get; set; }
 
-        public int DentistId { get; set; }
+        public string Image { get; set; }
 
-        public Dentist Dentist { get; set; }
+        public string DentistId { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public virtual Category Category { get; set; }
+
+        public virtual Dentist Dentist { get; set; }
 
         public virtual ICollection<Image> Images
         {

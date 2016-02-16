@@ -1,10 +1,10 @@
-﻿using System.Web.Mvc;
-
-namespace DentistSpace.Web.Areas.Dentists
+﻿namespace DentistSpace.Web.Areas.Dentists
 {
-    public class DentistsAreaRegistration : AreaRegistration 
+    using System.Web.Mvc;
+
+    public class DentistsAreaRegistration : AreaRegistration
     {
-        public override string AreaName 
+        public override string AreaName
         {
             get 
             {
@@ -12,7 +12,7 @@ namespace DentistSpace.Web.Areas.Dentists
             }
         }
 
-        public override void RegisterArea(AreaRegistrationContext context) 
+        public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
                 "Dentists_default",

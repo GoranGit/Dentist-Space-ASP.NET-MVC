@@ -2,8 +2,8 @@
 {
     using System.Web.Mvc;
     using AutoMapper;
-    using Services.Web;
     using DentistSpace.Web.Infrastructure.Mapping;
+    using Services.Web;
 
     public abstract class BaseController : Controller
     {

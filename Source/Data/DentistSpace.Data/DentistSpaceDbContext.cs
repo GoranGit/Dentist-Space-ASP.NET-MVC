@@ -28,6 +28,8 @@
 
         public virtual IDbSet<Patient> Patients { get; set; }
 
+        public virtual IDbSet<Category> Categories { get; set; }
+
         public virtual IDbSet<MedicalRecord> MedicalRecords { get; set; }
 
         public static DentistSpaceDbContext Create()

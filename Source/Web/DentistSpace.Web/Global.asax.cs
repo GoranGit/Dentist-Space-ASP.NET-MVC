@@ -17,7 +17,7 @@
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             DatabaseConfig.Initialize();
-
+            AutofacConfig.RegisterAutofac();
             var autoMapperConfig = new AutoMapperConfig();
             autoMapperConfig.Execute(Assembly.Load(AssemblyConstants.WebModels));
         }
