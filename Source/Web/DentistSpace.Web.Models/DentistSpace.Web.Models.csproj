@@ -110,6 +110,8 @@
     <Compile Include="Account\ResetPasswordViewModel.cs" />
     <Compile Include="Account\SendCodeViewModel.cs" />
     <Compile Include="Account\VerifyCodeViewModel.cs" />
+    <Compile Include="BaseModels\IdentifierBaseModel.cs" />
+    <Compile Include="Home\MainBannerViewModel.cs" />
     <Compile Include="Home\PostViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Manage\ChangePasswordViewModel.cs" />
@@ -139,6 +141,10 @@
     <ProjectReference Include="..\..\Data\DentistSpace.Data.Models\DentistSpace.Data.Models.csproj">
       <Project>{a6cb0045-6f33-4752-af57-b30557056fbc}</Project>
       <Name>DentistSpace.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\DentistSpace.Services.Web\DentistSpace.Services.Web.csproj">
+      <Project>{1280ff34-f14c-480f-8902-7038cf7012cd}</Project>
+      <Name>DentistSpace.Services.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\DentistSpace.Web.Infrastructure\DentistSpace.Web.Infrastructure.csproj">
       <Project>{27c41ad1-bba2-4289-a76d-6bf26526151c}</Project>

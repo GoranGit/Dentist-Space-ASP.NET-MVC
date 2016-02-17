@@ -4,6 +4,7 @@ namespace DentistSpace.Data.Migrations
     using System.Collections.Generic;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
@@ -24,6 +25,7 @@ namespace DentistSpace.Data.Migrations
             var patient = this.SeedPatient(context, dentist);
             var categories = this.SeedCategories(context);
             this.SeedPosts(context, dentist, categories);
+            this.SeedBanners(context);
             context.SaveChanges();
         }
 
@@ -151,7 +153,14 @@ namespace DentistSpace.Data.Migrations
                 {
                     for (var i = 0; i < 5; i++)
                     {
-                        context.Posts.Add(new Post() { Content = "Test content" + i, CreatedOn = DateTime.Now, Dentist = dentist, IsDeleted = false, CategoryId = category.Id, IsPublic = true });
+                        context.Posts.Add(new Post() { Content = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                            + i, Title = "Post " + i, CreatedOn = DateTime.Now, Dentist = dentist, IsDeleted = false, CategoryId = category.Id, IsPublic = true });
+                    }
+
+                    for (var i = 0; i < 5; i++)
+                    {
+                        context.Posts.Add(new Post() { Content = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                            + i, Title = "Post " + i, CreatedOn = DateTime.Now, Dentist = dentist, IsDeleted = false, CategoryId = category.Id, IsPublic = false });
                     }
                 }
 
@@ -176,6 +185,69 @@ namespace DentistSpace.Data.Migrations
             }
 
             return listCategories;
+        }
+
+        private void SeedBanners(DentistSpaceDbContext context)
+        {
+            if (context.Banners.Count() == 0)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    Banner b = new Banner()
+                    {
+                        CreatedOn = DateTime.Now,
+                        ImageUrl = "http://blogofpink.com/wp-content/uploads/2015/10/AGM_WEB_BANNER_1.png",
+                        IsDeleted = false,
+                        TimesToShow = 10,
+                        Type = BannerType.TopBanner
+                    };
+
+                    context.Banners.Add(b);
+                }
+
+                for (int i = 0; i < 5; i++)
+                {
+                    Banner b = new Banner()
+                    {
+                        CreatedOn = DateTime.Now,
+                        ImageUrl = "http://www.funeraldirectoryaustralia.com.au/wp-content/uploads/2014/07/place-your-ad-here-240x500.jpg",
+                        IsDeleted = false,
+                        TimesToShow = 10,
+                        Type = BannerType.RightSideBanner
+                    };
+
+                    context.Banners.Add(b);
+                }
+
+                for (int i = 0; i < 5; i++)
+                {
+                    Banner b = new Banner()
+                    {
+                        CreatedOn = DateTime.Now,
+                        ImageUrl = "http://www.funeraldirectoryaustralia.com.au/wp-content/uploads/2014/07/place-your-ad-here-240x500.jpg",
+                        IsDeleted = false,
+                        TimesToShow = 10,
+                        Type = BannerType.LeftSideBanner
+                    };
+
+                    context.Banners.Add(b);
+                }
+
+                for (int i = 0; i < 5; i++)
+                {
+                    Banner b = new Banner()
+                    {
+                        CreatedOn = DateTime.Now,
+                        ImageUrl = "http://blogofpink.com/wp-content/uploads/2015/10/AGM_WEB_BANNER_1.png",
+                        IsDeleted = false,
+                        TimesToShow = 10,
+                        Type = BannerType.BottomBanner
+                    };
+
+                    context.Banners.Add(b);
+                }
+                context.SaveChanges();
+            }
         }
     }
 }

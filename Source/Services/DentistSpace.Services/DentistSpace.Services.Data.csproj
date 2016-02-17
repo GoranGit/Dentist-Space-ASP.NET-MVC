@@ -61,7 +61,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BannerService.cs" />
     <Compile Include="CategoriesService.cs" />
+    <Compile Include="Contracts\IBannerService.cs" />
     <Compile Include="Contracts\ICategoryService.cs" />
     <Compile Include="Contracts\IPostService.cs" />
     <Compile Include="Contracts\IRoleService.cs" />

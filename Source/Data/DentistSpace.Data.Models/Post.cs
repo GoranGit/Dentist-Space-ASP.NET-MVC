@@ -17,6 +17,8 @@
             this.ratings = new HashSet<Rating>();
         }
 
+        public string Title { get; set; }
+
         public string Content { get; set; }
 
         [Index]

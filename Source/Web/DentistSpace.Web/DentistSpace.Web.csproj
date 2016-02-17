@@ -223,6 +223,7 @@
     <Compile Include="Areas\Dentists\DentistsAreaRegistration.cs" />
     <Compile Include="Areas\Patients\PatientsAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BannerController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -321,6 +322,9 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\PostViewModel.cshtml" />
+    <Content Include="Views\Shared\_MainBannerPartial.cshtml" />
+    <Content Include="Views\Shared\_BottomBannerPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -334,6 +338,7 @@
     <Folder Include="Areas\Patients\Models\" />
     <Folder Include="Areas\Patients\Views\Shared\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Banner\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="font\glyphicons-halflings-regular.woff" />

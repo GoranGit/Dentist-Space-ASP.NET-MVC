@@ -1,16 +1,18 @@
 ﻿namespace DentistSpace.Web.Models.Home
 {
     using System;
-    using System.Linq;
     using AutoMapper;
+    using BaseModels;
     using Data.Models;
     using DentistSpace.Web.Infrastructure.Mapping;
 
-    public class PostViewModel : IMapFrom<Post>, IHaveCustomMappings
+    public class PostViewModel : IdentifierBaseModel, IMapFrom<Post>, IHaveCustomMappings
     {
         private string imageUrl;
 
         public string Url { get; set; }
+
+        public string Title { get; set; }
 
         //TODO HTML Sanitizer
         public string Content { get; set; }
@@ -40,7 +42,7 @@
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Post, PostViewModel>()
-                .ForMember(x => x.Url, opt => opt.MapFrom(x => "/Post/Details/" + x.Id))
+                .ForMember(x => x.Url, opt => opt.MapFrom(x => "/Post/Details/" + this.identifierProvider.EncodeId(x.Id)))
                 .ForMember(x => x.ImageUrl, opt => opt.MapFrom(x => x.Image));
         }
     }

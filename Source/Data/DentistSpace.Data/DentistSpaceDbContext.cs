@@ -30,6 +30,8 @@
 
         public virtual IDbSet<Category> Categories { get; set; }
 
+        public virtual IDbSet<Banner> Banners { get; set; }
+
         public virtual IDbSet<MedicalRecord> MedicalRecords { get; set; }
 
         public static DentistSpaceDbContext Create()

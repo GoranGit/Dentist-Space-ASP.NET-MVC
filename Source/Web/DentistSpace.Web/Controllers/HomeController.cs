@@ -8,6 +8,7 @@
     using System.Collections;
     using AutoMapper.QueryableExtensions;
     using System.Collections.Generic;
+    using Services.Web;
 
     public class HomeController : BaseController
     {
@@ -22,7 +23,7 @@
         {
             ViewBag.Message = "Home";
 
-            var posts = this.posts.GetAllPublic(10, 1);
+            var posts = this.posts.GetAllPublic();
             var result = this.Mapper.Map<IEnumerable<PostViewModel>>(posts);
 
             return this.View(result);
