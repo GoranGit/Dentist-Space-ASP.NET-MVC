@@ -2,8 +2,8 @@
 {
     using System;
     using System.Linq;
-    using DentistSpace.Data;
     using Data.Common;
+    using DentistSpace.Data;
     using DentistSpace.Data.Models;
     using DentistSpace.Services.Contracts;
 

@@ -9,6 +9,8 @@
     using AutoMapper.QueryableExtensions;
     using System.Collections.Generic;
     using Services.Web;
+    using Infrastructure.Populators;
+    using Infrastructure.Constants;
 
     public class HomeController : BaseController
     {
@@ -19,10 +21,9 @@
             this.posts = posts;
         }
 
+        [PopulateCategories(CashingTime = CacheConstants.ShortCaching)]
         public ActionResult Index()
         {
-            ViewBag.Message = "Home";
-
             var posts = this.posts.GetAllPublic();
             var result = this.Mapper.Map<IEnumerable<PostViewModel>>(posts);
 

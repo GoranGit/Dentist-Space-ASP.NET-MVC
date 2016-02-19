@@ -228,6 +228,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
+    <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -325,6 +326,7 @@
     <Content Include="Views\Shared\DisplayTemplates\PostViewModel.cshtml" />
     <Content Include="Views\Shared\_MainBannerPartial.cshtml" />
     <Content Include="Views\Shared\_BottomBannerPartial.cshtml" />
+    <Content Include="Views\Shared\_PostsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -339,6 +341,7 @@
     <Folder Include="Areas\Patients\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Banner\" />
+    <Folder Include="Views\Posts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="font\glyphicons-halflings-regular.woff" />

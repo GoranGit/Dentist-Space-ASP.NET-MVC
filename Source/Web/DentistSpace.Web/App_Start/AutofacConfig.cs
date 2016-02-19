@@ -1,5 +1,5 @@
 ﻿namespace DentistSpace.Web
-{ 
+{
     using System.Data.Entity;
     using System.Reflection;
     using System.Web.Mvc;
@@ -10,6 +10,7 @@
     using DentistSpace.Services.Web;
     using DentistSpace.Web.Controllers;
     using Infrastructure.Constants;
+    using Infrastructure.Populators;
 
     public static class AutofacConfig
     {
@@ -64,6 +65,8 @@
 
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseController>().PropertiesAutowired();
+
+            builder.RegisterType<PopulateCategoriesAttribute>().PropertiesAutowired();
         }
     }
 }

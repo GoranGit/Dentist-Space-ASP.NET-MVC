@@ -1,5 +1,29 @@
 ﻿@model  IEnumerable<DentistSpace.Web.Models.Home.PostViewModel>
-
 <div class="row">
-    @Html.DisplayForModel(Model)
+
 </div>
+
+@Html.DropDownList("categories", new SelectList(ViewBag.Categories, "Id", "Name"), new { onchange = "changed()" })
+
+<div id="result">
+    @Html.Partial("_PostsPartial", Model);
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('select').material_select();
+        }
+        );
+
+        function changed() {
+            console.log('tuka');
+            var id = $("select[name='categories']").val();
+            $.ajax({
+                url: "/Posts/GetPostsByCategoryId/" + id, success: function (result) {
+                    $("#result").html(result);
+                }
+            })
+        }
+    </script>
+}

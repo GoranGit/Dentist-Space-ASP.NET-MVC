@@ -60,6 +60,7 @@ namespace DentistSpace.Data.Migrations
                     UserName = "gorancvetkov",
                     FirstName = "Goran",
                     LastName = "Cvetkov",
+                    Avatar = "http://pickaface.net/avatar/Opi51c74d0125fd4.png"
                 };
 
                 userManager.Create(admin, "123456");
@@ -90,7 +91,8 @@ namespace DentistSpace.Data.Migrations
                     Email = "stamat@yahoo.com",
                     UserName = "stamat",
                     FirstName = "Stamat",
-                    LastName = "Stamatov"
+                    LastName = "Stamatov",
+                    Avatar = "http://pickaface.net/avatar/Opi51c74d0125fd4.png"
                 };
 
                 userManager.Create(dentist, "123456");
@@ -122,7 +124,8 @@ namespace DentistSpace.Data.Migrations
                     Email = "aleksandra@yahoo.com",
                     UserName = "aleksandra",
                     FirstName = "Aleksandra",
-                    LastName = "Aleksandrova"
+                    LastName = "Aleksandrova",
+                    Avatar = "http://pickaface.net/avatar/Opi51c74d0125fd4.png"
                 };
 
                 userManager.Create(patient, "123456");
