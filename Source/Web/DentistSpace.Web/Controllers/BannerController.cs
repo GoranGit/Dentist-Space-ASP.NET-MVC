@@ -37,6 +37,7 @@
             {
                 return this.Content("Left banner!");
             }
+
             return this.PartialView("_LeftBannerPartial", result);
         }
 
@@ -49,6 +50,7 @@
             {
                 return this.Content("Bottom banner!");
             }
+
             return this.PartialView("_BottomBannerPartial", result);
         }
     }

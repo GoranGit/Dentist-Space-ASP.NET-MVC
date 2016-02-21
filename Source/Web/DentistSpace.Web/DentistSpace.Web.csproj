@@ -340,6 +340,7 @@
     <Content Include="Views\Shared\_MainBannerPartial.cshtml" />
     <Content Include="Views\Shared\_BottomBannerPartial.cshtml" />
     <Content Include="Views\Shared\_PostsPartial.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -353,7 +354,6 @@
     <Folder Include="Areas\Patients\Views\Shared\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Banner\" />
-    <Folder Include="Views\Posts\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="font\glyphicons-halflings-regular.woff" />

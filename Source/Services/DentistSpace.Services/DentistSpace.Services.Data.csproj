@@ -97,6 +97,10 @@
       <Project>{502837bc-2b97-44ef-ad35-83fd17da0c1d}</Project>
       <Name>DentistSpace.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DentistSpace.Services.Web\DentistSpace.Services.Web.csproj">
+      <Project>{1280ff34-f14c-480f-8902-7038cf7012cd}</Project>
+      <Name>DentistSpace.Services.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

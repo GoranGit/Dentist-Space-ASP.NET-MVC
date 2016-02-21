@@ -10,5 +10,7 @@
         IQueryable<Post> GetAllPublic(int count = 6, int page = 1);
 
         IQueryable<Post> GetAllPublicByCategory(int category, int count = 6, int page = 1);
+
+        Post GetPostDetails(string urlId);
     }
 }

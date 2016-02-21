@@ -1,18 +1,16 @@
-﻿namespace DentistSpace.Web.Models.Home
+﻿namespace DentistSpace.Web.Models.Posts
 {
     using System;
     using AutoMapper;
     using BaseModels;
-    using Data.Models;
-    using DentistSpace.Web.Infrastructure.Mapping;
+    using DentistSpace.Data.Models;
+    using Infrastructure.Mapping;
 
-    public class PostViewModel : IdentifierBaseModel, IMapFrom<Post>, IHaveCustomMappings
+    public class PostDetailsViewModel : IMapFrom<Post>, IHaveCustomMappings
     {
         private string imageUrl;
 
         private string userAvatar;
-
-        public string Url { get; set; }
 
         public string Title { get; set; }
 
@@ -23,7 +21,7 @@
 
         public string UserDetailsLink { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public string CreatedOn { get; set; }
 
         public string ImageUrl
         {
@@ -60,19 +58,20 @@
                 }
                 else
                 {
-                    this.userAvatar = "http://pickaface.net/avatar/Opi51c74d0125fd4.png";
+                    this.userAvatar = value;
                 }
             }
         }
 
         public void CreateMappings(IMapperConfiguration configuration)
         {
-            configuration.CreateMap<Post, PostViewModel>()
-                .ForMember(x => x.Url, opt => opt.MapFrom(x => "/Post/Details/" + this.identifierProvider.EncodeId(x.Id)))
+            configuration.CreateMap<Post, PostDetailsViewModel>()
                 .ForMember(x => x.ImageUrl, opt => opt.MapFrom(x => x.Image))
                 .ForMember(x => x.UserName, opt => opt.MapFrom(x => x.Dentist.User.FirstName + " " + x.Dentist.User.LastName))
                 .ForMember(x => x.UserDetailsLink, opt => opt.MapFrom(x => "/Dentists/Details/" + x.DentistId))
-                .ForMember(x => x.UserAvatar, opt => opt.MapFrom(x => x.Dentist.User.Avatar));
+                .ForMember(x => x.UserAvatar, opt => opt.MapFrom(x => x.Dentist.User.Avatar))
+                .ForMember(x => x.Content, opt => opt.MapFrom(x => x.Content))
+                .ForMember(x => x.CreatedOn, opt => opt.MapFrom(x => x.CreatedOn.ToString("MMMM MM,yyyy")));
         }
     }
 }

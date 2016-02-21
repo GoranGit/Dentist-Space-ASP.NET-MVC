@@ -5,14 +5,17 @@
     using Data;
     using Data.Models;
     using DentistSpace.Services.Contracts;
+    using Web;
 
     public class PostService : IPostService
     {
+        private IIdentifierProvider identifier;
         private IDbRepository<Post, int> posts;
 
-        public PostService(IDbRepository<Post,int> posts)
+        public PostService(IDbRepository<Post, int> posts, IIdentifierProvider identifier)
         {
             this.posts = posts;
+            this.identifier = identifier;
         }
 
         public IQueryable<Post> GetAllPublic(int count = 6, int page = 1)
@@ -43,6 +46,13 @@
                  .OrderByDescending(x => x.CreatedOn)
                  .Skip((page - 1) * count)
                  .Take(count);
+        }
+
+        public Post GetPostDetails(string urlId)
+        {
+            int id = this.identifier.DecodeId(urlId);
+            return this.posts
+                 .GetById(id);
         }
     }
 }

@@ -113,7 +113,8 @@
     <Compile Include="AutoCompleteModels\DentistAutoCompleteResponseModel.cs" />
     <Compile Include="BaseModels\IdentifierBaseModel.cs" />
     <Compile Include="Home\MainBannerViewModel.cs" />
-    <Compile Include="Home\PostViewModel.cs" />
+    <Compile Include="Posts\PostDetailsViewModel.cs" />
+    <Compile Include="Posts\PostViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />
     <Compile Include="Manage\ChangePasswordViewModel.cs" />
     <Compile Include="Manage\ConfigureTwoFactorViewModel.cs" />

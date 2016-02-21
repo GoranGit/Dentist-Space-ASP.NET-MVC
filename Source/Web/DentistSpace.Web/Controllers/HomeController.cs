@@ -1,16 +1,17 @@
 ﻿namespace DentistSpace.Web.Controllers
 {
-    using System.Web.Mvc;
-    using Models.Home;
-    using Infrastructure.Mapping;
-    using Services.Contracts;
-    using System.Linq;
     using System.Collections;
-    using AutoMapper.QueryableExtensions;
     using System.Collections.Generic;
-    using Services.Web;
-    using Infrastructure.Populators;
+    using System.Linq;
+    using System.Web.Mvc;
+    using AutoMapper.QueryableExtensions;
     using Infrastructure.Constants;
+    using Infrastructure.Mapping;
+    using Infrastructure.Populators;
+    using Models.Home;
+    using Models.Posts;
+    using Services.Contracts;
+    using Services.Web;
 
     public class HomeController : BaseController
     {

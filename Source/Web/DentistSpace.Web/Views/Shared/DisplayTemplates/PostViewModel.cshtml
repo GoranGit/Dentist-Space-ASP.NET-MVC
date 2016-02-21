@@ -1,4 +1,4 @@
-﻿@model DentistSpace.Web.Models.Home.PostViewModel
+﻿@model DentistSpace.Web.Models.Posts.PostViewModel
 
 <div class="col s4">
     <div class="blog-card">
@@ -32,6 +32,7 @@
             <div class="card-reveal" style="display: none; transform: translateY(0px);">
                 <span class="card-title grey-text text-darken-4"><i class="mdi-navigation-close right"></i> @Model.Title</span>
                 <p>@Model.Content</p>
+                <span class="left"><a href="@Model.Url">Read more</a></span>
             </div>
         </div>
     </div>
