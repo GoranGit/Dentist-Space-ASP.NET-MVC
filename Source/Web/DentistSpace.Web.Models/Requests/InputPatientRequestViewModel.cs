@@ -1,13 +1,13 @@
-﻿namespace DentistSpace.Web.Models.Patients
+﻿namespace DentistSpace.Web.Models.Requests
 {
     using System.ComponentModel.DataAnnotations;
     using Data.Models;
     using Infrastructure.Mapping;
 
-    public class InputParientRequestViewModel : IMapTo<PatientRequest>
+    public class InputPatientRequestViewModel : IMapTo<PatientRequest>
     {
         [Required]
-        public string DoctorId { get; set; }
+        public string DentistId { get; set; }
 
         [Required]
         [MinLength(10), MaxLength(300)]

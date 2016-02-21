@@ -1,0 +1,15 @@
+﻿@model DentistSpace.Web.Models.Requests.EditPatientRequestViewModel
+
+<div class="row">
+    <div class="input-field col s12">
+        <i class="mdi-action-question-answer prefix"></i>
+        @Html.TextAreaFor(m => m.Content, new { @class = "materialize-textarea", @readonly = "readonly" })
+        @Html.LabelFor(m => m.Content)
+        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+    </div>
+    <div class="row">
+        <div class="input-field col s6 offset-s3" />
+        @Html.CheckBoxFor(m => m.IsAccepted, new { @class="filled-in"})
+        @Html.LabelFor(m => m.IsAccepted)
+    </div>
+</div>

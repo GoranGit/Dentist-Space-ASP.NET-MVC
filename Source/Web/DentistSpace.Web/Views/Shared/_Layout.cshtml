@@ -6,7 +6,12 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/main")
-    @RenderSection("styles", required:false)
+    @RenderSection("styles", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+        (window.jQuery || document.write('<script src="/scripts/jquery-1.10.2.min.js"><\/script>'));
+    </script>
+    @RenderSection("kendoScripts", required: false)
 </head>
 <body>
     <div class="navbar-fixed">
@@ -16,14 +21,27 @@
                 <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
                 @Html.Partial("_LoginPartial")
                 <ul class="right hide-on-med-and-down">
-                    <li>@Html.ActionLink("Home", "Index", "Home" , new { area=""}, null)</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
-                  @if(User.IsInRole(DentistSpace.Common.Roles.User)) {
-                    <li>@Html.ActionLink("Patient request", "Index", "Request", new { area = "Patients" },null)</li>
-                  }
+                    @if (User.IsInRole(DentistSpace.Common.Roles.User))
+                    {
+                        <li>@Html.ActionLink("Patient request", "Index", "Request", new { area = "Patients" }, null)</li>
+                    }
+                    @if (User.IsInRole(DentistSpace.Common.Roles.Dentist))
+                    {
+                        <li>@Html.ActionLink("Patient requests", "Requests", "Patients", new { area = "Dentists" }, null)</li>
+                    }
                 </ul>
                 <ul class="side-nav" id="mobile">
+                    @if (User.IsInRole(DentistSpace.Common.Roles.User))
+                    {
+                        <li>@Html.ActionLink("Patient request", "Index", "Request", new { area = "Patients" }, null)</li>
+                    }
+                    @if (User.IsInRole(DentistSpace.Common.Roles.Dentist))
+                    {
+                        <li>@Html.ActionLink("Patient requests", "Requests", "Patients", new { area = "Dentists" }, null)</li>
+                    }
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
@@ -41,10 +59,6 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    <script>
-        (window.jQuery || document.write('<script src="/scripts/jquery-1.10.2.min.js"><\/script>'));
-    </script>
 
     @Scripts.Render("~/bundles/jqueryval")
     <script>
@@ -73,6 +87,6 @@
 
     <script>
         $(".button-collapse").sideNav();
-        </script>
+    </script>
 </body>
 </html>

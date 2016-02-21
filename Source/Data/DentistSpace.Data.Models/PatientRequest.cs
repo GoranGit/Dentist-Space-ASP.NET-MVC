@@ -9,7 +9,7 @@
         public string UserId { get; set; }
 
         [ForeignKey("Dentist")]
-        public string DoctorId { get; set; }
+        public string DentistId { get; set; }
 
         public string Content { get; set; }
 

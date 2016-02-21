@@ -38,6 +38,11 @@ namespace DentistSpace.Web
             bundles.Add(new ScriptBundle("~/bundles/jqueryui", JQueryUICDN)
                 .Include("~/Scripts/jquery-ui.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+         "~/Scripts/kendo/kendo.all.min.js",
+         // "~/Scripts/kendo/kendo.timezones.min.js", // uncomment if using the Scheduler
+         "~/Scripts/kendo/kendo.aspnetmvc.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/materialize", MaterializeCDN).Include(
                 "~/Scripts/materialize.js"));
 
@@ -52,6 +57,10 @@ namespace DentistSpace.Web
 
             bundles.Add(new StyleBundle("~/Content/jqueryui").Include(
                      "~/Content/jquery-ui*"));
+
+            bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
+          "~/Content/kendo/kendo.common-material.min.css",
+          "~/Content/kendo/kendo.material.min.css"));
         }
     }
 }

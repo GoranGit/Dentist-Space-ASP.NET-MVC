@@ -19,9 +19,9 @@
             this.userManager = new UserManager<User>(new UserStore<User>(context));
         }
 
-        public void ChangeRoleFor(User user, string role)
+        public void ChangeRoleFor(string userId, string role)
         {
-            this.userManager.AddToRole(user.Id, role);
+            this.userManager.AddToRole(userId, role);
         }
     }
 }

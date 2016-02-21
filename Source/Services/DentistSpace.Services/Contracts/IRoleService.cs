@@ -4,6 +4,6 @@
 
     public interface IRoleService
     {
-        void ChangeRoleFor(User user, string role);
+        void ChangeRoleFor(string userId, string role);
     }
 }

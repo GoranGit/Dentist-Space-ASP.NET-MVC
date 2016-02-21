@@ -2,11 +2,11 @@
 {
     using System.Web.Mvc;
     using Services.Contracts;
-    using Models.Patients;
     using Web.Controllers;
     using Data.Models;
     using Microsoft.AspNet.Identity;
     using Infrastructure.ModelFilters;
+    using Models.Requests;
 
     public class RequestController : BaseController
     {
@@ -28,7 +28,7 @@
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateModelState]
-        public ActionResult Index(InputParientRequestViewModel request)
+        public ActionResult Index(InputPatientRequestViewModel request)
         {
             var result = this.Mapper.Map<PatientRequest>(request);
             result.UserId = this.User.Identity.GetUserId();

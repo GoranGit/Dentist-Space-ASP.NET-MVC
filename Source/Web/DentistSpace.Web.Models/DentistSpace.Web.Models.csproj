@@ -123,7 +123,8 @@
     <Compile Include="Manage\ManageLoginsViewModel.cs" />
     <Compile Include="Manage\SetPasswordViewModel.cs" />
     <Compile Include="Manage\VerifyPhoneNumberViewModel.cs" />
-    <Compile Include="Patients\InputParientRequestViewModel.cs" />
+    <Compile Include="Requests\EditPatientRequestViewModel.cs" />
+    <Compile Include="Requests\InputPatientRequestViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -135,7 +136,9 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Patients\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\DentistSpace.Data.Common\DentistSpace.Data.Common.csproj">
       <Project>{78921d2e-b4ca-4225-9d68-f3b3d8e0dd04}</Project>

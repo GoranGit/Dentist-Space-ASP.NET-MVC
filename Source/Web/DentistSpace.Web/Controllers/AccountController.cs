@@ -7,12 +7,12 @@
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
+    using DentistSpace.Common;
+    using DentistSpace.Data.Models;
+    using DentistSpace.Web.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
-    using DentistSpace.Web.Models;
-    using DentistSpace.Data.Models;
-    using DentistSpace.Common;
 
     [Authorize]
     public class AccountController : Controller
@@ -155,7 +155,7 @@
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Username, Email = model.Email };
+                var user = new User { UserName = model.Username, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)

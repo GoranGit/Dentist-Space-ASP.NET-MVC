@@ -6,5 +6,7 @@
     public interface IDentistService
     {
         IQueryable<Dentist> GetDentists(string filter);
+
+        Dentist GetDentistById(string dentistId);
     }
 }

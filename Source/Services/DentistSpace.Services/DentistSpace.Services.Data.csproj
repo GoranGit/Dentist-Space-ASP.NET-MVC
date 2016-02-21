@@ -65,11 +65,13 @@
     <Compile Include="CategoriesService.cs" />
     <Compile Include="Contracts\IBannerService.cs" />
     <Compile Include="Contracts\ICategoryService.cs" />
+    <Compile Include="Contracts\IPatientService.cs" />
     <Compile Include="Contracts\IPostService.cs" />
     <Compile Include="Contracts\IRequestService.cs" />
     <Compile Include="Contracts\IRoleService.cs" />
     <Compile Include="Contracts\IDentistService.cs" />
     <Compile Include="DentistService.cs" />
+    <Compile Include="PatientService.cs" />
     <Compile Include="PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestService.cs" />
@@ -96,6 +98,10 @@
     <ProjectReference Include="..\..\Data\DentistSpace.Data\DentistSpace.Data.csproj">
       <Project>{502837bc-2b97-44ef-ad35-83fd17da0c1d}</Project>
       <Name>DentistSpace.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DentistSpace.Common\DentistSpace.Common.csproj">
+      <Project>{2366f49c-377b-47fc-86c2-2cb8602d3fef}</Project>
+      <Name>DentistSpace.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\DentistSpace.Services.Web\DentistSpace.Services.Web.csproj">
       <Project>{1280ff34-f14c-480f-8902-7038cf7012cd}</Project>

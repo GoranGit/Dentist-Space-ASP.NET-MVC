@@ -21,7 +21,11 @@
   -webkit-font-smoothing: antialiased;
 }
 
-
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: relative !important;
+    left: 0px !important;
+    visibility: visible !important;
+}
 .blog-card ul.card-action-buttons{
   margin: -26px 10px 0px 0px;
   text-align: right;

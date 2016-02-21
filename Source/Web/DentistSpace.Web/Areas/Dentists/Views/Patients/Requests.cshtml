@@ -1,0 +1,40 @@
+﻿@using Kendo.Mvc.UI
+@(Html.Kendo().Grid<DentistSpace.Web.Models.Requests.EditPatientRequestViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.Content);
+          columns.Bound(c => c.IsAccepted);
+          columns.Bound(c => c.PatientName);
+          columns.Command(command => { command.Edit(); }).Width(180);
+      })
+      .ToolBar(toolbar =>
+      {
+          toolbar.Excel();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable()
+      .Selectable(selectable =>
+      {
+          selectable.Mode(GridSelectionMode.Single);
+          selectable.Type(GridSelectionType.Row);
+      })
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable()
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("PatientRequests_Read", "Patients", new { area = "Dentists" }))
+          .Update(update => update.Action("PatientRequests_Update", "Patients", new { area = "Dentists" }))
+      )
+)
+
+@section kendoScripts{
+    @Styles.Render("~/Content/kendo/css")
+    @Scripts.Render("~/bundles/kendo")
+}

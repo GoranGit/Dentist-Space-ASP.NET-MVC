@@ -15,6 +15,11 @@
             this.dentists = dentists;
         }
 
+        public Dentist GetDentistById(string dentistId)
+        {
+            return this.dentists.GetById(dentistId);
+        }
+
         public IQueryable<Dentist> GetDentists(string filter)
         {
             string[] fullName = filter.Split(' ');

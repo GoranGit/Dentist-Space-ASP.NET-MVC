@@ -15,6 +15,22 @@
                     <p class="center">Join to our community now !</p>
                 </div>
             </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="mdi-social-person-outline prefix"></i>
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "validate" })
+                    @Html.LabelFor(m => m.FirstName, new { @class = "center-align" })
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "red" })
+                </div>
+            </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="mdi-social-person-outline prefix"></i>
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "validate" })
+                    @Html.LabelFor(m => m.LastName, new { @class = "center-align" })
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "red" })
+                </div>
+            </div>
                 <div class="row margin">
                     <div class="input-field col s12">
                         <i class="mdi-social-person-outline prefix"></i>
