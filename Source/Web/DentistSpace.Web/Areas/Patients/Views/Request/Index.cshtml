@@ -1,0 +1,85 @@
+﻿@model DentistSpace.Web.Models.Patients.InputParientRequestViewModel
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card-panel">
+    <h4 class="header2">@ViewBag.Title</h4>
+    <div class="row">
+        @using (Html.BeginForm("Index", "Request", new { area = "Patients", ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "col s12", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="mdi-action-account-circle prefix active"></i>
+                        <input id="dentist-full-name" type="text" class="validate valid">
+                        <input name="DoctorId" type="hidden" />
+                        <label for="dentist-full-name" class="active">Name</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <i class="mdi-action-question-answer prefix"></i>
+                        @Html.TextAreaFor(m => m.Content, new { @class = "materialize-textarea validate", length = "300", @id = "message4" })
+                        @*<textarea id="message4" class="materialize-textarea validate" length="120"></textarea>*@
+                        @Html.LabelFor(m => m.Content)
+                        @Html.ValidationMessageFor(m => m.Content, "", new { @class = "red" })
+                        @* <label for="message" class="">Message</label>*@
+                        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">
+                                Submit
+                                <i class="mdi-content-send right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+        }
+        </div>
+       
+    </div>
+
+    @section styles{
+        @Styles.Render("~/Content/jqueryui")
+    }
+
+    @section scripts{
+        @Scripts.Render("~/bundles/jqueryui")
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                $("#dentist-full-name").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "/AutoComplete/AutoCompleteDentists",
+                            type: "POST",
+                            dataType: "json",
+                            data: { term: $("#dentist-full-name").val() },
+                            success: function (data) {
+                                console.log(data);
+                                debugger;
+                                response($.map(data, function (item) {
+                                    debugger;
+                                    return { label: item.FirstName + " " + item.LastName, value: item.FirstName + " " + item.LastName, id: item.Id };
+                                }))
+                            }
+                        })
+                    },
+                    messages: {
+                        noResults: "No results found!"
+                    },
+                    select: function (event, ui) {
+                        var id = ui.item.id;
+                        $("input[name='DoctorId']").val(id)
+                        $("#dentist-full-name").val(ui.item.value)
+                        return false;
+                    }
+                });
+            })
+        </script>
+    }

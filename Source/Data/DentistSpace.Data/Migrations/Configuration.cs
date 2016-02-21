@@ -5,6 +5,7 @@ namespace DentistSpace.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
     using Common;
+    using DentistSpace.Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
@@ -36,14 +37,17 @@ namespace DentistSpace.Data.Migrations
                 var roleStore = new RoleStore<IdentityRole>(context);
                 var roleManager = new RoleManager<IdentityRole>(roleStore);
 
-                var adminRole = new IdentityRole { Name = "Admin" };
+                var userRole = new IdentityRole { Name = Roles.User };
+                roleManager.Create(userRole);
+
+                var adminRole = new IdentityRole { Name = Roles.Admin };
                 roleManager.Create(adminRole);
 
-                var dentistRole = new IdentityRole { Name = "Dentist" };
+                var dentistRole = new IdentityRole { Name = Roles.Dentist };
 
                 roleManager.Create(dentistRole);
 
-                var patientRole = new IdentityRole { Name = "Patient" };
+                var patientRole = new IdentityRole { Name = Roles.Patient };
                 roleManager.Create(patientRole);
                 context.SaveChanges();
             }
@@ -156,14 +160,32 @@ namespace DentistSpace.Data.Migrations
                 {
                     for (var i = 0; i < 5; i++)
                     {
-                        context.Posts.Add(new Post() { Content = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                            + i, Title = "Post " + i, CreatedOn = DateTime.Now, Dentist = dentist, IsDeleted = false, CategoryId = category.Id, IsPublic = true });
+                        context.Posts.Add(new Post()
+                        {
+                            Content = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                            + i,
+                            Title = "Post " + i,
+                            CreatedOn = DateTime.Now,
+                            Dentist = dentist,
+                            IsDeleted = false,
+                            CategoryId = category.Id,
+                            IsPublic = true
+                        });
                     }
 
                     for (var i = 0; i < 5; i++)
                     {
-                        context.Posts.Add(new Post() { Content = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                            + i, Title = "Post " + i, CreatedOn = DateTime.Now, Dentist = dentist, IsDeleted = false, CategoryId = category.Id, IsPublic = false });
+                        context.Posts.Add(new Post()
+                        {
+                            Content = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                            + i,
+                            Title = "Post " + i,
+                            CreatedOn = DateTime.Now,
+                            Dentist = dentist,
+                            IsDeleted = false,
+                            CategoryId = category.Id,
+                            IsPublic = false
+                        });
                     }
                 }
 

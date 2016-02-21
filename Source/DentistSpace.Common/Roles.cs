@@ -1,7 +1,8 @@
-﻿namespace DentistSpace.Web.Infrastructure.Constants
+﻿namespace DentistSpace.Common
 {
-    public class Role
+    public class Roles
     {
+        public const string User = "User";
         public const string Admin = "Admin";
         public const string Dentist = "Dentist";
         public const string Patient = "Patient";

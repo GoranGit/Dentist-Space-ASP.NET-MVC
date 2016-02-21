@@ -9,9 +9,9 @@
 
     public class BannerService : IBannerService
     {
-        private IDbRepository<Banner> banners;
+        private IDbRepository<Banner, int> banners;
 
-        public BannerService(IDbRepository<Banner> banners)
+        public BannerService(IDbRepository<Banner, int> banners)
         {
             this.banners = banners;
         }
@@ -23,10 +23,13 @@
                 .Where(x => x.Type == BannerType.BottomBanner && x.TimesToShow > 0)
                 .OrderBy(x => Guid.NewGuid())
                 .FirstOrDefault();
+            if (banner != null && banner.TimesToShow > 0)
+            {
+                banner.TimesToShow--;
+                this.banners.Update(banner);
+                this.banners.Save();
+            }
 
-            banner.TimesToShow--;
-            this.banners.Update(banner);
-            this.banners.Save();
             return banner;
         }
 
@@ -38,9 +41,13 @@
                .OrderBy(x => Guid.NewGuid())
                .FirstOrDefault();
 
-            banner.TimesToShow--;
-            this.banners.Update(banner);
-            this.banners.Save();
+            if (banner != null && banner.TimesToShow > 0)
+            {
+                banner.TimesToShow--;
+                this.banners.Update(banner);
+                this.banners.Save();
+            }
+
             return banner;
         }
 
@@ -52,9 +59,13 @@
                .OrderBy(x => Guid.NewGuid())
                .FirstOrDefault();
 
-            banner.TimesToShow--;
-            this.banners.Update(banner);
-            this.banners.Save();
+            if (banner != null && banner.TimesToShow > 0)
+            {
+                banner.TimesToShow--;
+                this.banners.Update(banner);
+                this.banners.Save();
+            }
+
             return banner;
         }
 
@@ -66,9 +77,13 @@
                 .OrderBy(x => Guid.NewGuid())
                 .FirstOrDefault();
 
-            banner.TimesToShow--;
-            this.banners.Update(banner);
-            this.banners.Save();
+            if (banner != null && banner.TimesToShow > 0)
+            {
+                banner.TimesToShow--;
+                this.banners.Update(banner);
+                this.banners.Save();
+            }
+
             return banner;
         }
     }

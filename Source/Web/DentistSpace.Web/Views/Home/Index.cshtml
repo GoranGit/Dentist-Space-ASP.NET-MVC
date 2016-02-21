@@ -1,6 +1,5 @@
 ﻿@model  IEnumerable<DentistSpace.Web.Models.Home.PostViewModel>
 <div class="row">
-
 </div>
 
 @Html.DropDownList("categories", new SelectList(ViewBag.Categories, "Id", "Name"), new { onchange = "changed()" })

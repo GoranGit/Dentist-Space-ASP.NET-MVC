@@ -15,6 +15,8 @@ namespace DentistSpace.Web
             string RespondCDN = @"https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js";
             string MaterializeCDN = @"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js";
             string MaterializeCSSCDN = @"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css";
+            string JQueryUICDN = @"https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/i18n/jquery-ui-i18n.min.js";
+
 
             bundles.UseCdn = true;
 
@@ -24,6 +26,7 @@ namespace DentistSpace.Web
             bundles.Add(new ScriptBundle("~/bundles/jqueryval", JQueryValidateCDN).Include(
                         "~/Scripts/jquery.validate.js"));
 
+
             bundles.Add(new ScriptBundle("~/bundles/jqunobtrusive", jQueryValidateUnobtrusiveCDN).Include(
                        "~/Scripts/jquery.validate.unobtrusive.js"));
 
@@ -31,6 +34,9 @@ namespace DentistSpace.Web
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr", ModernizrCDN).Include(
                         "~/Scripts/modernizr-*"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui", JQueryUICDN)
+                .Include("~/Scripts/jquery-ui.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/materialize", MaterializeCDN).Include(
                 "~/Scripts/materialize.js"));
@@ -43,6 +49,9 @@ namespace DentistSpace.Web
 
             bundles.Add(new StyleBundle("~/Content/main").Include(
                       "~/Content/Site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/jqueryui").Include(
+                     "~/Content/jquery-ui*"));
         }
     }
 }

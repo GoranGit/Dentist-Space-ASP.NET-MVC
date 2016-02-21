@@ -20,6 +20,11 @@
         {
             var banner = this.banners.GetMainBanner();
             var result = this.Mapper.Map<BannerViewModel>(banner);
+            if (result == null)
+            {
+                return this.Content("Main banner!");
+            }
+
             return this.PartialView("_MainBannerPartial", result);
         }
 
@@ -28,6 +33,10 @@
         {
             var banner = this.banners.GetLeftBanner();
             var result = this.Mapper.Map<BannerViewModel>(banner);
+            if (result == null)
+            {
+                return this.Content("Left banner!");
+            }
             return this.PartialView("_LeftBannerPartial", result);
         }
 
@@ -36,6 +45,10 @@
         {
             var banner = this.banners.GetBottomBanner();
             var result = this.Mapper.Map<BannerViewModel>(banner);
+            if (result == null)
+            {
+                return this.Content("Bottom banner!");
+            }
             return this.PartialView("_BottomBannerPartial", result);
         }
     }

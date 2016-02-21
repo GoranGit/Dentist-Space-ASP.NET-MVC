@@ -221,8 +221,10 @@
     <Compile Include="App_Start\ViewEngineConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Dentists\DentistsAreaRegistration.cs" />
+    <Compile Include="Areas\Patients\Controllers\RequestController.cs" />
     <Compile Include="Areas\Patients\PatientsAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AutoCompleteController.cs" />
     <Compile Include="Controllers\BannerController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -238,6 +240,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\jquery-ui.structure.css" />
+    <Content Include="Content\jquery-ui.structure.min.css" />
+    <Content Include="Content\jquery-ui.theme.css" />
+    <Content Include="Content\jquery-ui.theme.min.css" />
     <Content Include="Content\materialize.css" />
     <Content Include="Content\materialize.min.css" />
     <Content Include="favicon.ico" />
@@ -275,10 +283,13 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Dentists\Views\web.config" />
     <Content Include="Areas\Patients\Views\web.config" />
+    <Content Include="Areas\Patients\Views\Request\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -289,7 +300,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -336,7 +349,6 @@
     <Folder Include="Areas\Dentists\Controllers\" />
     <Folder Include="Areas\Dentists\Models\" />
     <Folder Include="Areas\Dentists\Views\Shared\" />
-    <Folder Include="Areas\Patients\Controllers\" />
     <Folder Include="Areas\Patients\Models\" />
     <Folder Include="Areas\Patients\Views\Shared\" />
     <Folder Include="Models\" />
@@ -359,6 +371,10 @@
     <ProjectReference Include="..\..\Data\DentistSpace.Data\DentistSpace.Data.csproj">
       <Project>{502837bc-2b97-44ef-ad35-83fd17da0c1d}</Project>
       <Name>DentistSpace.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DentistSpace.Common\DentistSpace.Common.csproj">
+      <Project>{2366f49c-377b-47fc-86c2-2cb8602d3fef}</Project>
+      <Name>DentistSpace.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\DentistSpace.Services.Web\DentistSpace.Services.Web.csproj">
       <Project>{1280ff34-f14c-480f-8902-7038cf7012cd}</Project>

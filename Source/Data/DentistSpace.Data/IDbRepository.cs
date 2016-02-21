@@ -3,11 +3,6 @@
     using System.Linq;
     using DentistSpace.Data.Common.Models;
 
-    public interface IDbRepository<T> : IDbRepository<T, int>
-            where T : BaseModel<int>
-    {
-    }
-
     public interface IDbRepository<T, in TKey>
         where T : BaseModel<TKey>
     {

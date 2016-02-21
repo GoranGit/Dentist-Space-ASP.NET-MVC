@@ -74,6 +74,10 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\DentistSpace.Common\DentistSpace.Common.csproj">
+      <Project>{2366f49c-377b-47fc-86c2-2cb8602d3fef}</Project>
+      <Name>DentistSpace.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DentistSpace.Data.Common\DentistSpace.Data.Common.csproj">
       <Project>{78921d2e-b4ca-4225-9d68-f3b3d8e0dd04}</Project>
       <Name>DentistSpace.Data.Common</Name>

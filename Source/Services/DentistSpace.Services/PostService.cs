@@ -8,9 +8,9 @@
 
     public class PostService : IPostService
     {
-        private IDbRepository<Post> posts;
+        private IDbRepository<Post, int> posts;
 
-        public PostService(IDbRepository<Post> posts)
+        public PostService(IDbRepository<Post,int> posts)
         {
             this.posts = posts;
         }

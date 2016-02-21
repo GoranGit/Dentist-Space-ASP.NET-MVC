@@ -6,6 +6,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/main")
+    @RenderSection("styles", required:false)
 </head>
 <body>
     <div class="navbar-fixed">
@@ -15,22 +16,25 @@
                 <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
                 @Html.Partial("_LoginPartial")
                 <ul class="right hide-on-med-and-down">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home" , new { area=""}, null)</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
+                  @if(User.IsInRole(DentistSpace.Common.Roles.User)) {
+                    <li>@Html.ActionLink("Patient request", "Index", "Request", new { area = "Patients" },null)</li>
+                  }
                 </ul>
                 <ul class="side-nav" id="mobile">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, null)</li>
                 </ul>
             </div>
         </nav>
     </div>
     <div class="container body-content">
-        @Html.Action("GetMainBanner", "Banner")
+        @Html.Action("GetMainBanner", "Banner", new { area = "" })
         @RenderBody()
-        @Html.Action("GetBottomBanner", "Banner")
+        @Html.Action("GetBottomBanner", "Banner", new { area = "" })
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Dentists app</p>
