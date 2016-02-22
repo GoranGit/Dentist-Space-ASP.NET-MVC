@@ -1,12 +1,12 @@
 ﻿namespace DentistSpace.Web.Areas.Patients.Controllers
 {
     using System.Web.Mvc;
+    using Data.Models;
+    using Infrastructure.ModelFilters;
+    using Microsoft.AspNet.Identity;
+    using Models.Requests;
     using Services.Contracts;
     using Web.Controllers;
-    using Data.Models;
-    using Microsoft.AspNet.Identity;
-    using Infrastructure.ModelFilters;
-    using Models.Requests;
 
     public class RequestController : BaseController
     {
@@ -33,7 +33,7 @@
             var result = this.Mapper.Map<PatientRequest>(request);
             result.UserId = this.User.Identity.GetUserId();
             this.requests.AddPatientRequest(result);
-            return this.RedirectToAction("Index", "Home", new { area = "" });
+            return this.RedirectToAction("Index", "Home", new { area = string.Empty });
         }
     }
 }

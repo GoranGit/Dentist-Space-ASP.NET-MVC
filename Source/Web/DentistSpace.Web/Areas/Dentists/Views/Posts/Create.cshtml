@@ -1,0 +1,97 @@
+﻿@model DentistSpace.Web.Models.Posts.InputPostViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card-panel">
+    <div class="blog-card">
+        <h4 class="card-title grey-text text-darken-4">
+            @ViewBag.Title
+        </h4>
+        <div class="row">
+            @using (Html.BeginForm("Create", "Posts", new { area = "Dentists" }, FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row margin">
+                    <div class="input-field col s12">
+                        <i class="mdi-social-person-outline prefix"></i>
+                        @Html.TextBoxFor(m => m.Title, new { @class = "validate" })
+                        @Html.LabelFor(m => m.Title, new { @class = "center-align" })
+                        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "red" })
+                    </div>
+                </div>
+
+                <div class="row margin">
+                    <div class="input-field col s12">
+                        <i class="mdi-social-person-outline prefix"></i>
+                        @Html.DropDownList("categories", new SelectList(ViewBag.Categories, "Id", "Name"), new { onchange = "changed()" })
+                        <input type="hidden" name="CategoryId" />
+                    </div>
+                </div>
+
+                <div class="row margin">
+                    <div class="input-field col s12">
+                        <i class="mdi-social-person-outline prefix"></i>
+                        @Html.TextBoxFor(m => m.Image, new { @class = "validate" })
+                        @Html.LabelFor(m => m.Image, new { @class = "center-align" })
+                        @Html.ValidationMessageFor(m => m.Image, "", new { @class = "red" })
+                    </div>
+                </div>
+
+                <div class="row margin">
+                    <div class="input-field col s12">
+                        <i class="mdi-social-person-outline prefix"></i>
+                        @Html.TextAreaFor(m => m.Content, new { @class = "validate" })
+                        @Html.LabelFor(m => m.Content, new { @class = "center-align" })
+                        @Html.ValidationMessageFor(m => m.Content, "", new { @class = "red" })
+                    </div>
+                </div>
+
+                <div class="row margin">
+                    <div class="input-field col s12">
+                        <i class="mdi-social-person-outline prefix"></i>
+                        @Html.CheckBoxFor(m => m.IsPublic, new { @class = "validate" })
+                        @Html.LabelFor(m => m.IsPublic, new { @class = "center-align" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <button class="btn cyan waves-effect waves-light right" type="submit" name="action">
+                            Submit
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@section scripts{
+
+    @Scripts.Render("~/bundles/tinyMCE")
+
+    <script>
+        tinymce.init({
+            selector: "textarea[name='Content']", plugins: [
+            "autolink lists link image charmap print preview anchor",
+            "visualblocks code fullscreen",
+            "insertdatetime media table contextmenu colorpicker hr imagetools paste media"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+        });
+
+        $(document).ready(function () {
+            $('select').material_select();
+        }
+      );
+
+        function changed() {
+            console.log('tuka');
+            var id = $("select[name='categories']").val();
+            $("input[name='CategoryId']").val(id);
+        }
+    </script>
+
+    @Scripts.Render("~/bundles/tinyMCEplugins")
+}

@@ -6,7 +6,7 @@
     using System.Web;
     using System.Web.Mvc;
 
-    public class RequestsController : Controller
+    public class RequestController : Controller
     {
         // GET: Dentists/Requests
         public ActionResult Index()

@@ -17,7 +17,6 @@ namespace DentistSpace.Web
             string MaterializeCSSCDN = @"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css";
             string JQueryUICDN = @"https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/i18n/jquery-ui-i18n.min.js";
 
-
             bundles.UseCdn = true;
 
             bundles.Add(new ScriptBundle("~/bundles/jquery", JQueryCDN).Include(
@@ -38,6 +37,24 @@ namespace DentistSpace.Web
             bundles.Add(new ScriptBundle("~/bundles/jqueryui", JQueryUICDN)
                 .Include("~/Scripts/jquery-ui.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/tinyMCE")
+                .Include("~/Scripts/tinymce/tinymce.min.js",
+                "~/Scripts/tinymce/jquery.tinymce.min.js",
+                "~/Scripts/tinymce/themes/modern/theme.min.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/tinyMCEplugins")
+               .Include("~/Scripts/tinymce/plugins/anchor/plugin.min.js",
+                "~/Scripts/tinymce/plugins/charmap/plugin.min.js",
+                "~/Scripts/tinymce/plugins/colorpicker/plugin.min.js",
+                "~/Scripts/tinymce/plugins/image/plugin.min.js",
+                "~/Scripts/tinymce/plugins/media/plugin.min.js",
+                "~/Scripts/tinymce/plugins/insertdatetime/plugin.min.js",
+                "~/Scripts/tinymce/plugins/preview/plugin.min.js",
+                "~/Scripts/tinymce/plugins/save/plugin.min.js",
+                "~/Scripts/tinymce/plugins/wordcount/plugin.min.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
          "~/Scripts/kendo/kendo.all.min.js",
          // "~/Scripts/kendo/kendo.timezones.min.js", // uncomment if using the Scheduler
@@ -55,8 +72,12 @@ namespace DentistSpace.Web
             bundles.Add(new StyleBundle("~/Content/main").Include(
                       "~/Content/Site.css"));
 
+            bundles.Add(new StyleBundle("~/Content/tinymce").Include(
+                     "~/Scripts/tinymce/skins/lightgray/content.min.css",
+                     "~/Scripts/tinymce/skins/lightgray/skin.min.css"));
+
             bundles.Add(new StyleBundle("~/Content/jqueryui").Include(
-                     "~/Content/jquery-ui*"));
+                    "~/Content/jquery-ui*"));
 
             bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
           "~/Content/kendo/kendo.common-material.min.css",

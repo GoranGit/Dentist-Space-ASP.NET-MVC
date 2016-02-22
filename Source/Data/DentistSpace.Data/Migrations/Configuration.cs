@@ -158,33 +158,19 @@ namespace DentistSpace.Data.Migrations
             {
                 foreach (Category category in categories)
                 {
-                    for (var i = 0; i < 5; i++)
+                    for (var i = 0; i < 10; i++)
                     {
                         context.Posts.Add(new Post()
                         {
                             Content = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
                             + i,
-                            Title = "Post " + i,
+                            Title = "Test Post " + i,
                             CreatedOn = DateTime.Now,
                             Dentist = dentist,
                             IsDeleted = false,
                             CategoryId = category.Id,
-                            IsPublic = true
-                        });
-                    }
-
-                    for (var i = 0; i < 5; i++)
-                    {
-                        context.Posts.Add(new Post()
-                        {
-                            Content = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
-                            + i,
-                            Title = "Post " + i,
-                            CreatedOn = DateTime.Now,
-                            Dentist = dentist,
-                            IsDeleted = false,
-                            CategoryId = category.Id,
-                            IsPublic = false
+                            IsPublic = true,
+                            Image = "http://pre09.deviantart.net/1d29/th/pre/f/2013/068/6/4/tooth_by_keketz-d5xhsi4.png",
                         });
                     }
                 }

@@ -18,6 +18,12 @@
             this.identifier = identifier;
         }
 
+        public void AddNewPost(Post post)
+        {
+            this.posts.Add(post);
+            this.posts.Save();
+        }
+
         public IQueryable<Post> GetAllPublic(int count = 6, int page = 1)
         {
             return this.posts

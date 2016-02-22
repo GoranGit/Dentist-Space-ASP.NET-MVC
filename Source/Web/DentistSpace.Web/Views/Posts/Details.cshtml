@@ -1,5 +1,5 @@
 ﻿@model DentistSpace.Web.Models.Posts.PostDetailsViewModel
-
+@using Microsoft.Security.Application;
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,7 +18,7 @@
 
         <div class="row">
             <div class="col s8  offset-s2">
-                <p>@Model.Content</p>
+                <p>@Html.Raw(Sanitizer.GetSafeHtml(Model.Content))</p>
             </div>
         </div>
         <div class="row">

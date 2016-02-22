@@ -5,7 +5,6 @@
     using BaseModels;
     using DentistSpace.Data.Models;
     using Infrastructure.Mapping;
-
     public class PostDetailsViewModel : IMapFrom<Post>, IHaveCustomMappings
     {
         private string imageUrl;
@@ -14,7 +13,6 @@
 
         public string Title { get; set; }
 
-        //TODO HTML Sanitizer
         public string Content { get; set; }
 
         public string UserName { get; set; }
@@ -70,7 +68,7 @@
                 .ForMember(x => x.UserName, opt => opt.MapFrom(x => x.Dentist.User.FirstName + " " + x.Dentist.User.LastName))
                 .ForMember(x => x.UserDetailsLink, opt => opt.MapFrom(x => "/Dentists/Details/" + x.DentistId))
                 .ForMember(x => x.UserAvatar, opt => opt.MapFrom(x => x.Dentist.User.Avatar))
-                .ForMember(x => x.Content, opt => opt.MapFrom(x => x.Content))
+                .ForMember(x => x.Content, opt => opt.MapFrom(x =>  x.Content))
                 .ForMember(x => x.CreatedOn, opt => opt.MapFrom(x => x.CreatedOn.ToString("MMMM MM,yyyy")));
         }
     }

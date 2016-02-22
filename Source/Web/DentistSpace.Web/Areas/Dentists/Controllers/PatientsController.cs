@@ -1,25 +1,19 @@
 ﻿namespace DentistSpace.Web.Areas.Dentists.Controllers
 {
     using System;
-    using System.Collections.Generic;
-    using System.Data;
-    using System.Data.Entity;
     using System.Linq;
-    using System.Net;
-    using System.Web;
     using System.Web.Mvc;
-    using Data;
-    using DentistSpace.Data.Common.Models;
+    using Common;
     using DentistSpace.Data.Models;
     using DentistSpace.Services.Contracts;
-    using Models.Requests;
+    using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
     using Microsoft.AspNet.Identity;
+    using Models.Requests;
     using Web.Controllers;
-    using System.Linq;
-    using Infrastructure.Mapping;
 
+    [Authorize(Roles =Roles.Dentist)]
     public class PatientsController : BaseController
     {
        // private DentistSpaceDbContext db = new DentistSpaceDbContext();
@@ -36,6 +30,7 @@
 
         public ActionResult Requests()
         {
+            this.ViewBag.Title = "Patients requests";
             return this.View();
         }
 

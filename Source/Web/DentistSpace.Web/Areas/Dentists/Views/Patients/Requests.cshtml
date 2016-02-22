@@ -1,5 +1,12 @@
 ﻿@using Kendo.Mvc.UI
-@(Html.Kendo().Grid<DentistSpace.Web.Models.Requests.EditPatientRequestViewModel>()
+
+<div class="card-panel">
+    <div class="blog-card">
+        <h4 class="card-title grey-text text-darken-4">
+            @ViewBag.Title
+        </h4>
+
+        @(Html.Kendo().Grid<DentistSpace.Web.Models.Requests.EditPatientRequestViewModel>()
       .Name("grid")
       .Columns(columns =>
       {
@@ -14,7 +21,7 @@
       })
       .ColumnMenu()
       .Editable(editable => editable.Mode(GridEditMode.PopUp))
-      .Pageable()
+      .Pageable(page => page.Enabled(true))
       .Selectable(selectable =>
       {
           selectable.Mode(GridSelectionMode.Single);
@@ -25,14 +32,17 @@
           sortable.SortMode(GridSortMode.SingleColumn);
       })
       .Filterable()
-      .Scrollable()
+      .Scrollable(src => src.Height(600))
       .DataSource(dataSource => dataSource
           .Ajax()
           .Model(model => model.Id(p => p.Id))
           .Read(read => read.Action("PatientRequests_Read", "Patients", new { area = "Dentists" }))
           .Update(update => update.Action("PatientRequests_Update", "Patients", new { area = "Dentists" }))
       )
-)
+        )
+
+    </div>
+</div>
 
 @section kendoScripts{
     @Styles.Render("~/Content/kendo/css")

@@ -113,6 +113,7 @@
     <Compile Include="AutoCompleteModels\DentistAutoCompleteResponseModel.cs" />
     <Compile Include="BaseModels\IdentifierBaseModel.cs" />
     <Compile Include="Home\MainBannerViewModel.cs" />
+    <Compile Include="Posts\InputPostViewModel.cs" />
     <Compile Include="Posts\PostDetailsViewModel.cs" />
     <Compile Include="Posts\PostViewModel.cs" />
     <Compile Include="Manage\AddPhoneNumberViewModel.cs" />

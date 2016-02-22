@@ -6,7 +6,7 @@
     {
         public override string AreaName
         {
-            get 
+            get
             {
                 return "Dentists";
             }
@@ -17,7 +17,8 @@
             context.MapRoute(
                 "Dentists_default",
                 "Dentists/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                defaults: new { action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "DentistSpace.Web.Areas.Dentists.Controllers" }
             );
         }
     }
