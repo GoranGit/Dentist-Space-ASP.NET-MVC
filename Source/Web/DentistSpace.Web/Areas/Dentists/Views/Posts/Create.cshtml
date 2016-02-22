@@ -3,70 +3,83 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <div class="card-panel">
     <div class="blog-card">
-        <h4 class="card-title grey-text text-darken-4">
+        <h4 class=" card-title grey-text text-darken-4">
             @ViewBag.Title
         </h4>
         <div class="row">
-            @using (Html.BeginForm("Create", "Posts", new { area = "Dentists" }, FormMethod.Post, new { role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <div class="row margin">
-                    <div class="input-field col s12">
-                        <i class="mdi-social-person-outline prefix"></i>
-                        @Html.TextBoxFor(m => m.Title, new { @class = "validate" })
-                        @Html.LabelFor(m => m.Title, new { @class = "center-align" })
-                        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "red" })
-                    </div>
+            <div class="col s6 offset-s2">
+                @using (Html.BeginForm("Create", "Posts", new { area = "Dentists" }, FormMethod.Post, new { role = "form" }))
+                    {
+            @Html.AntiForgeryToken()
+            <div class=" row margin">
+                <div class="input-field col s12">
+                    <i class="mdi-social-person-outline prefix"></i>
+                    @Html.TextBoxFor(m => m.Title, new { @class = "validate" })
+                    @Html.LabelFor(m => m.Title, new { @class = "center-align" })
+                    @Html.ValidationMessageFor(m => m.Title, "", new { @class = "red" })
                 </div>
+            </div>
 
-                <div class="row margin">
-                    <div class="input-field col s12">
-                        <i class="mdi-social-person-outline prefix"></i>
-                        @Html.DropDownList("categories", new SelectList(ViewBag.Categories, "Id", "Name"), new { onchange = "changed()" })
-                        <input type="hidden" name="CategoryId" />
-                    </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="mdi-action-toc prefix"></i>
+                    @Html.DropDownList("categories", new SelectList(ViewBag.Categories, "Id", "Name"), new { onchange = "changed()" })
+                    <input type="hidden" name="CategoryId" />
                 </div>
+            </div>
 
-                <div class="row margin">
-                    <div class="input-field col s12">
-                        <i class="mdi-social-person-outline prefix"></i>
-                        @Html.TextBoxFor(m => m.Image, new { @class = "validate" })
-                        @Html.LabelFor(m => m.Image, new { @class = "center-align" })
-                        @Html.ValidationMessageFor(m => m.Image, "", new { @class = "red" })
-                    </div>
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="mdi-content-link prefix"></i>
+                    @Html.TextBoxFor(m => m.Image, new { @class = "validate" })
+                    @Html.LabelFor(m => m.Image, new { @class = "center-align" })
+                    @Html.ValidationMessageFor(m => m.Image, "", new { @class = "red" })
                 </div>
+            </div>
 
-                <div class="row margin">
+            <div class="row margin">
+                <div class="input-field col s2">
+                    <i class="mdi-social-people prefix"></i>
+                    @Html.CheckBoxFor(m => m.IsPublic, new { @class = "validate" })
+                    @Html.LabelFor(m => m.IsPublic, new { @class = "center-align" })
+                </div>
+            </div>
+
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <a class="waves-effect waves-light btn modal-trigger" href="#modal">Write post content</a>
+                </div>
+            </div>
+    //////////////
+
+            <div id="modal" class="modal bottom-sheet" style="display: block; opacity: 0; bottom: -100%; z-index: 1003;">
+                <div class="modal-content">
+                    <h4>Post Content</h4>
                     <div class="input-field col s12">
                         <i class="mdi-social-person-outline prefix"></i>
                         @Html.TextAreaFor(m => m.Content, new { @class = "validate" })
                         @Html.LabelFor(m => m.Content, new { @class = "center-align" })
                         @Html.ValidationMessageFor(m => m.Content, "", new { @class = "red" })
                     </div>
-                </div>
-
-                <div class="row margin">
-                    <div class="input-field col s12">
-                        <i class="mdi-social-person-outline prefix"></i>
-                        @Html.CheckBoxFor(m => m.IsPublic, new { @class = "validate" })
-                        @Html.LabelFor(m => m.IsPublic, new { @class = "center-align" })
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <button class="btn cyan waves-effect waves-light right" type="submit" name="action">
+                                Submit
+                                <i class="mdi-content-send right"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <button class="btn cyan waves-effect waves-light right" type="submit" name="action">
-                            Submit
-                            <i class="mdi-content-send right"></i>
-                        </button>
-                    </div>
-                </div>
-            }
+            </div>
+    /////////////
+}
+            </div>
         </div>
     </div>
 </div>
+
 @section scripts{
 
     @Scripts.Render("~/bundles/tinyMCE")
@@ -83,6 +96,8 @@
 
         $(document).ready(function () {
             $('select').material_select();
+            $('.parallax').parallax();
+            $('.modal-trigger').leanModal();
         }
       );
 

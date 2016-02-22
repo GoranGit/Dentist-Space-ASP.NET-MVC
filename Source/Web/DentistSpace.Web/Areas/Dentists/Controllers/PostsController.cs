@@ -36,6 +36,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [PopulateCategories]
         [ValidateModelState]
         public ActionResult Create(InputPostViewModel post)
         {

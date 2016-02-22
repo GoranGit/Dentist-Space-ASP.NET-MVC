@@ -31,6 +31,7 @@
                     @if (User.IsInRole(DentistSpace.Common.Roles.Dentist))
                     {
                         <li>@Html.ActionLink("Patient requests", "Requests", "Patients", new { area = "Dentists" }, null)</li>
+                        <li>@Html.ActionLink("New post", "Create", "Posts", new { area = "Dentists" }, null)</li>
                     }
                 </ul>
                 <ul class="side-nav" id="mobile">
@@ -38,9 +39,11 @@
                     {
                         <li>@Html.ActionLink("Patient request", "Index", "Request", new { area = "Patients" }, null)</li>
                     }
+
                     @if (User.IsInRole(DentistSpace.Common.Roles.Dentist))
                     {
                         <li>@Html.ActionLink("Patient requests", "Requests", "Patients", new { area = "Dentists" }, null)</li>
+                        <li>@Html.ActionLink("New post", "Create", "Posts", new { area = "Dentists" }, null)</li>
                     }
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, null)</li>

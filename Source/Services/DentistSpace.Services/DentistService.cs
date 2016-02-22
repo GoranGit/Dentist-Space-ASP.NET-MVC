@@ -32,7 +32,8 @@
 
             return this.dentists
                  .All()
-                 .Where(x => (x.User.FirstName.Contains(firstName) && (lastName != null ? x.User.LastName.Contains(lastName) : true)));
+                 .Where(x => (x.User.FirstName.Contains(firstName) && 
+                 (lastName != null ? x.User.LastName.Contains(lastName) : true)));
         }
     }
 }
