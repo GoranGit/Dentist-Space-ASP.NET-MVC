@@ -1,4 +1,12 @@
 ﻿@model  IEnumerable<DentistSpace.Web.Models.Posts.PostViewModel>
+
+@if (this.TempData["ErrorMessage"] != null)
+{
+    <div class="invalid">
+    @this.TempData["ErrorMessage"];   
+    </div>
+}
+
 <div class="row">
 </div>
 
@@ -12,8 +20,7 @@
     <script>
         $(document).ready(function () {
             $('select').material_select();
-        }
-        );
+        });
 
         function changed() {
             console.log('tuka');

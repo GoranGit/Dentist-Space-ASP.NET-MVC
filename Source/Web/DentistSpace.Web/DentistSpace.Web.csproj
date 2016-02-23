@@ -459,6 +459,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="Areas\Dentists\Views\Request\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -522,12 +523,20 @@
     <Content Include="Areas\Dentists\Views\Shared\EditorTemplates\EditPatientRequestViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="App_Data\uploads\dentistsRequests\0\" />
+    <Folder Include="App_Data\uploads\dentistsRequests\1\" />
+    <Folder Include="App_Data\uploads\dentistsRequests\2\" />
+    <Folder Include="App_Data\uploads\dentistsRequests\3\" />
+    <Folder Include="App_Data\uploads\dentistsRequests\4\" />
+    <Folder Include="App_Data\uploads\dentistsRequests\5\" />
+    <Folder Include="App_Data\uploads\dentistsRequests\6\" />
+    <Folder Include="App_Data\uploads\dentistsRequests\7\" />
+    <Folder Include="App_Data\uploads\dentistsRequests\8\" />
+    <Folder Include="App_Data\uploads\dentistsRequests\9\" />
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Dentists\Models\" />
-    <Folder Include="Areas\Dentists\Views\Requests\" />
     <Folder Include="Areas\Patients\Models\" />
     <Folder Include="Areas\Patients\Views\Shared\" />
     <Folder Include="Models\" />

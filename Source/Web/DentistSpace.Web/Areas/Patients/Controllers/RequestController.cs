@@ -21,8 +21,8 @@
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Title = "Make patient request to you dentist";
-            return View();
+            this.ViewBag.Title = "Make patient request to you dentist";
+            return this.View();
         }
 
         [HttpPost]

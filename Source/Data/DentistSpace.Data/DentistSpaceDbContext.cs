@@ -39,6 +39,8 @@
 
         public virtual IDbSet<PatientRequest> PatientRequests { get; set; }
 
+        public virtual IDbSet<DentistRequest> DentistRequests { get; set; }
+
         public static DentistSpaceDbContext Create()
         {
             return new DentistSpaceDbContext();

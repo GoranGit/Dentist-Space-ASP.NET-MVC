@@ -1,17 +1,61 @@
 ﻿namespace DentistSpace.Web.Areas.Dentists.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
+    using System.IO;
     using System.Web.Mvc;
+    using Common;
+    using Data.Models;
+    using Infrastructure.ModelFilters;
+    using Microsoft.AspNet.Identity;
+    using Models.Requests;
+    using Services.Contracts;
+    using Web.Controllers;
 
-    public class RequestController : Controller
+    [Authorize(Roles = Roles.User)]
+    public class RequestController : BaseController
     {
-        // GET: Dentists/Requests
+        private IDentistRequestService dentistRequests;
+        private const string RequestsPath = "~/App_Data/uploads/dentistsRequests/";
+
+        public RequestController(IDentistRequestService dentistRequests)
+        {
+            this.dentistRequests = dentistRequests;
+        }
+
+        [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            this.ViewBag.Title = "Make dentist request to admin!";
+            return this.View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateModelState]
+        public ActionResult Index(InputDentistRequestViewModel request)
+        {
+            if (request.File.ContentLength > 0)
+            {
+                var file = request.File;
+                var dentistRequest = new DentistRequest()
+                {
+                    Content = request.Content,
+                    UserId = this.User.Identity.GetUserId()
+                };
+
+                this.dentistRequests.AddRequest(dentistRequest);
+
+                var folder = dentistRequest.Id % 10;
+                var realFileName = dentistRequest.FileName.ToString();
+
+                var path = Path.Combine(this.Server.MapPath(RequestsPath + folder), realFileName + Path.GetExtension(file.FileName));
+                file.SaveAs(path);
+            }
+            else
+            {
+                this.TempData["ErrorMessage"] = "File can't be empty!";
+            }
+
+            return this.RedirectToAction("Index", "Home", new { area = string.Empty });
         }
     }
 }

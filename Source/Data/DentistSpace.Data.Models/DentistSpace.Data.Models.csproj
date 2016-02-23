@@ -62,6 +62,7 @@
     <Compile Include="Category.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Dentist.cs" />
+    <Compile Include="DentistRequest.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="MedicalRecord.cs" />
     <Compile Include="Message.cs" />
