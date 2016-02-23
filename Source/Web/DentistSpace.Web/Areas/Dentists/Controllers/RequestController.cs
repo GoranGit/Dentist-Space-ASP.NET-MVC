@@ -55,6 +55,7 @@
                 this.TempData["ErrorMessage"] = "File can't be empty!";
             }
 
+            //TODO: Write the right redirect view.
             return this.RedirectToAction("Index", "Home", new { area = string.Empty });
         }
     }

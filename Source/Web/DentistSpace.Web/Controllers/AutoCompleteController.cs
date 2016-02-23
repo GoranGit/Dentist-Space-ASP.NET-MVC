@@ -19,6 +19,7 @@
 
         [Authorize]
         [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
         public ActionResult AutoCompleteDentists(string term)
         {
             var entity = this.dentists.GetDentists(term);
@@ -27,6 +28,5 @@
 
             return this.Json(result, JsonRequestBehavior.AllowGet);
         }
-
     }
 }

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<DentistSpace.Web.Models.Posts.PostViewModel>
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <div class="row">
+    </div>
+
+    @Html.DropDownList("categories", new SelectList(ViewBag.Categories, "Id", "Name"), new { onchange = "changed()" })
+
+    <div id="result">
+        @Html.Partial("_PostsPartial", Model)
+    </div>
+
+    @section scripts{
+        <script>
+            $(document).ready(function () {
+                $('select').material_select();
+            });
+
+            function changed() {
+                console.log('tuka');
+                var id = $("select[name='categories']").val();
+                $.ajax({
+                    url: "/Posts/GetPrivatePostsByCategoryId/" + id, success: function (result) {
+                        $("#result").html(result);
+                    }
+                })
+            }
+        </script>
+    }

@@ -33,6 +33,14 @@
         }
 
         [HttpGet]
+        public ActionResult GetPrivatePostsByCategoryId(int id)
+        {
+            var posts = this.posts.GetAllPrivateByCategory(id);
+            var result = this.Mapper.Map<IEnumerable<PostViewModel>>(posts);
+            return this.PartialView("_PostsPartial", result);
+        }
+
+        [HttpGet]
         public ActionResult Details(string id)
         {
             var post = this.posts.GetPostDetails(id);
