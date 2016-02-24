@@ -1,0 +1,69 @@
+﻿@model DentistSpace.Web.Models.MedicalRecords.EditPatientMedicalRecordsViewModel
+
+@using (Html.BeginForm("Patient_Update", "Patients", new { area = "Dentists" }, FormMethod.Post, new { enctype = "multipart/form-data", @id = "file-upload-form" }))
+{
+
+    @Html.HiddenFor(x => x.Id);
+
+    <div class="input-field col s12">
+        <i class="mdi-social-person prefix"></i>
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "materialize-textarea", @readonly = "readonly" })
+        @Html.LabelFor(m => m.FirstName)
+        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+    </div>
+    <div class="input-field col s12">
+        <i class="mdi-social-person prefix"></i>
+        @Html.TextBoxFor(m => m.LastName, new { @class = "materialize-textarea", @readonly = "readonly" })
+        @Html.LabelFor(m => m.LastName)
+        <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+    </div>
+
+
+
+    <div class="file-field input-field col s12">
+        <div class="btn">
+            <i class="mdi-file-attachment"></i>
+
+            @Html.TextBoxFor(m => m.File, new { type = "file" })
+
+        </div>
+        <div class="col s9">
+            <input class="file-path validate" type="text">
+            @Html.ValidationMessageFor(x => x.File, "", new { @class = "red" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <a class="btn cyan waves-effect waves-light right" type="button" id="submit-file" href="#">
+                Submit
+                <i class="mdi-content-send right"></i>
+            </a>
+        </div>
+    </div>
+}
+
+@if (Model.MedicalRecords != null)
+{
+    foreach (var record in Model.MedicalRecords)
+    {
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="mdi-social-person prefix"></i>
+                <label>@record </label>
+            </div>
+        </div>
+    }
+}
+
+
+<script>
+
+    $("#submit-file").on("click", function () {
+        $("#file-upload-form").ajaxSubmit({
+            success: function () {
+                debugger;
+                alert("Your upload was success!");
+            }
+        })
+    })
+</script>

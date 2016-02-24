@@ -6,26 +6,32 @@
     using Common;
     using DentistSpace.Data.Models;
     using DentistSpace.Services.Contracts;
+    using Models.MedicalRecords;
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
     using Microsoft.AspNet.Identity;
     using Models.Requests;
     using Web.Controllers;
+    using System.IO;
 
-    [Authorize(Roles =Roles.Dentist)]
+    [Authorize(Roles = Roles.Dentist)]
     public class PatientsController : BaseController
     {
-       // private DentistSpaceDbContext db = new DentistSpaceDbContext();
+        // private DentistSpaceDbContext db = new DentistSpaceDbContext();
         private IRequestService requests;
         private IPatientService patients;
         private IDentistService dentists;
+        private IMedicalRecordService medicalRecords;
 
-        public PatientsController(IRequestService requests, IPatientService patients, IDentistService dentists)
+        private const string MedicalRecordsPath = "~/App_Data/uploads/medicalRecords/";
+
+        public PatientsController(IRequestService requests, IPatientService patients, IDentistService dentists, IMedicalRecordService medicalRecords)
         {
             this.requests = requests;
             this.patients = patients;
             this.dentists = dentists;
+            this.medicalRecords = medicalRecords;
         }
 
         public ActionResult Requests()
@@ -38,7 +44,8 @@
         {
             IQueryable<EditPatientRequestViewModel> patientrequests = this.requests.GetPatientsRequestsForDentist(this.User.Identity.GetUserId()).To<EditPatientRequestViewModel>();
 
-            DataSourceResult result = patientrequests.ToDataSourceResult(request, patientRequest => new {
+            DataSourceResult result = patientrequests.ToDataSourceResult(request, patientRequest => new
+            {
                 Id = patientRequest.Id,
                 Content = patientRequest.Content,
                 IsAccepted = patientRequest.IsAccepted,
@@ -76,6 +83,60 @@
             var fileContents = Convert.FromBase64String(base64);
 
             return this.File(fileContents, contentType, fileName);
+        }
+
+        public ActionResult Index()
+        {
+            this.ViewBag.Title = "Patients requests";
+            return this.View();
+        }
+
+        public ActionResult Patient_Read([DataSourceRequest]DataSourceRequest request)
+        {
+            IQueryable<EditPatientMedicalRecordsViewModel> patienRecords = this.dentists.GetDentistById(this.User.Identity.GetUserId()).Patients.AsQueryable<Patient>().To<EditPatientMedicalRecordsViewModel>();
+
+            DataSourceResult result = patienRecords.ToDataSourceResult(request, patient => new
+            {
+                Id = patient.Id,
+                FirstName = patient.FirstName,
+                LastName = patient.LastName,
+                MedicalRecords = patient.MedicalRecords,
+                File = patient.File
+            });
+
+            return this.Json(result);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Patient_Update([DataSourceRequest]DataSourceRequest request, EditPatientMedicalRecordsViewModel editRequest)
+        {
+            if (this.ModelState.IsValid)
+            {
+
+                if (editRequest.File.ContentLength > 0)
+                {
+                    var file = editRequest.File;
+                    var fileExtension = Path.GetExtension(file.FileName);
+
+                    var medicalRecord = new MedicalRecord()
+                    {
+                        DentistId = this.User.Identity.GetUserId(),
+                        Extension = fileExtension,
+                        PatientId = editRequest.Id,
+                        OriginalName = file.FileName,
+                    };
+
+                    this.medicalRecords.AddNewMedicalRecord(medicalRecord);
+
+                    var folder = medicalRecord.Id % 10;
+                    var virtualFileName = medicalRecord.FileName.ToString();
+
+                    var path = Path.Combine(this.Server.MapPath(MedicalRecordsPath + folder), virtualFileName + fileExtension);
+                    file.SaveAs(path);
+                }
+            }
+
+            return this.Json(new[] { editRequest }.ToDataSourceResult(request, this.ModelState));
         }
     }
 }

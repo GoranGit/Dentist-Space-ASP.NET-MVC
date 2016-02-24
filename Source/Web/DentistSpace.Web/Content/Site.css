@@ -21,6 +21,11 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.card-image{
+    height:340px;
+    overflow:hidden;
+}
+
 [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
     position: relative !important;
     left: 0px !important;

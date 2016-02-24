@@ -1,34 +1,25 @@
 ﻿namespace DentistSpace.Data.Models
 {
-    using System.Collections.Generic;
+    using System;
     using System.ComponentModel.DataAnnotations;
     using DentistSpace.Data.Common.Models;
 
     public class MedicalRecord : BaseModel<int>
     {
-        private ICollection<Image> images;
-
         public MedicalRecord()
         {
-            this.images = new HashSet<Image>();
+            this.FileName = Guid.NewGuid();
         }
+
+        public Guid FileName { get; set; }
 
         [Required]
-        public string Content { get; set; }
+        public string OriginalName { get; set; }
 
-        public virtual ICollection<Image> Images
-        {
-            get
-            {
-                return this.images;
-            }
+        [Required]
+        public string Extension { get; set; }
 
-            set
-            {
-                this.images = value;
-            }
-        }
-
+        [Required]
         public string PatientId { get; set; }
 
         public virtual Patient Patient { get; set; }

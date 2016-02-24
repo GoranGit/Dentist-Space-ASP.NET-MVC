@@ -1,19 +1,26 @@
 ﻿@model  IEnumerable<DentistSpace.Web.Models.Posts.PostViewModel>
+
+@if (this.TempData["ErrorMessage"] != null)
+{
+    <div class="invalid">
+    @this.TempData["ErrorMessage"] 
+    </div>
+}
+
 <div class="row">
 </div>
 
 @Html.DropDownList("categories", new SelectList(ViewBag.Categories, "Id", "Name"), new { onchange = "changed()" })
 
 <div id="result">
-    @Html.Partial("_PostsPartial", Model);
+    @Html.Partial("_PostsPartial", Model)
 </div>
 
 @section scripts{
     <script>
         $(document).ready(function () {
             $('select').material_select();
-        }
-        );
+        });
 
         function changed() {
             console.log('tuka');

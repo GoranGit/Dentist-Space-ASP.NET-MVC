@@ -1,5 +1,6 @@
 ﻿namespace DentistSpace.Data.Models
 {
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using DentistSpace.Data.Common.Models;
 
@@ -11,6 +12,9 @@
         [ForeignKey("Dentist")]
         public string DentistId { get; set; }
 
+        [Required]
+        [MinLength(100)]
+        [MaxLength(500)]
         public string Content { get; set; }
 
         public bool IsAccepted { get; set; }

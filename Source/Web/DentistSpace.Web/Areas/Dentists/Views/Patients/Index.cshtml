@@ -1,0 +1,50 @@
+﻿@using Kendo.Mvc.UI
+
+<div class="card-panel">
+    <div class="blog-card">
+        <h4 class="card-title grey-text text-darken-4">
+            @ViewBag.Title
+        </h4>
+
+        @(Html.Kendo().Grid<DentistSpace.Web.Models.MedicalRecords.EditPatientMedicalRecordsViewModel>()
+      .Name("grid")
+      .Columns(columns =>
+      {
+          columns.Bound(c => c.FirstName);
+          columns.Bound(c => c.LastName);
+          columns.Bound(c => c.MedicalRecords);
+          columns.Command(command => { command.Edit(); }).Width(180);
+      })
+      .ToolBar(toolbar =>
+      {
+          toolbar.Excel();
+      })
+      .ColumnMenu()
+      .Editable(editable => editable.Mode(GridEditMode.PopUp))
+      .Pageable(page => page.Enabled(true))
+      .Selectable(selectable =>
+      {
+          selectable.Mode(GridSelectionMode.Single);
+          selectable.Type(GridSelectionType.Row);
+      })
+      .Sortable(sortable =>
+      {
+          sortable.SortMode(GridSortMode.SingleColumn);
+      })
+      .Filterable()
+      .Scrollable(src => src.Height(600))
+      .DataSource(dataSource => dataSource
+          .Ajax()
+          .Model(model => model.Id(p => p.Id))
+          .Read(read => read.Action("Patient_Read", "Patients", new { area = "Dentists" }))
+          .Update(update => update.Action("Patient_Update", "Patients", new { area = "Dentists" }))
+      )
+        )
+
+    </div>
+</div>
+
+@section kendoScripts{
+    @Styles.Render("~/Content/kendo/css")
+    @Scripts.Render("~/bundles/kendo")
+}

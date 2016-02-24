@@ -1,6 +1,7 @@
 ﻿namespace DentistSpace.Services
 {
     using System;
+    using System.Linq;
     using Data;
     using Data.Models;
     using DentistSpace.Services.Contracts;

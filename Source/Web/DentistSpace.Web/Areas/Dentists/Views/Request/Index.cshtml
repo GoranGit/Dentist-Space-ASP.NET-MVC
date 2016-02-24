@@ -1,0 +1,42 @@
+﻿@model DentistSpace.Web.Models.Requests.InputDentistRequestViewModel
+
+<div class="card-panel">
+    <h4 class="header2">@ViewBag.Title</h4>
+    <div class="row">
+        @using (Html.BeginForm("Index", "Request", new { area = "Dentists", ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "col s12", role = "form", enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="mdi-action-question-answer prefix"></i>
+                    @Html.TextAreaFor(m => m.Content, new { @class = "materialize-textarea validate", length = "100", @id = "message4" })
+                    @Html.LabelFor(m => m.Content)
+                    @Html.ValidationMessageFor(m => m.Content, "", new { @class = "red" })
+                    <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
+                </div>
+
+                <div class="file-field input-field col s12">
+                    <div class="btn">
+                        <i class="mdi-file-attachment"></i>
+                            
+                        @Html.TextBoxFor(m => m.File, new { type = "file" })
+                      
+                    </div>
+                    <div class="col s9">
+                           <input class="file-path validate" type="text">
+                        @Html.ValidationMessageFor(x => x.File, "", new { @class = "red" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <button class="btn cyan waves-effect waves-light right" type="submit" name="action">
+                            Submit
+                            <i class="mdi-content-send right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -23,10 +23,8 @@
                     <div class="input-field col s12">
                         <i class="mdi-action-question-answer prefix"></i>
                         @Html.TextAreaFor(m => m.Content, new { @class = "materialize-textarea validate", length = "300", @id = "message4" })
-                        @*<textarea id="message4" class="materialize-textarea validate" length="120"></textarea>*@
                         @Html.LabelFor(m => m.Content)
                         @Html.ValidationMessageFor(m => m.Content, "", new { @class = "red" })
-                        @* <label for="message" class="">Message</label>*@
                         <span class="character-counter" style="float: right; font-size: 12px; height: 1px;"></span>
                     </div>
                     <div class="row">
@@ -40,7 +38,6 @@
                 </div>
         }
         </div>
-       
     </div>
 
     @section styles{
@@ -59,7 +56,10 @@
                             url: "/AutoComplete/AutoCompleteDentists",
                             type: "POST",
                             dataType: "json",
-                            data: { term: $("#dentist-full-name").val() },
+                            data: {
+                                term: $("#dentist-full-name").val(),
+                                __RequestVerificationToken: $("input[name = '__RequestVerificationToken']").val()
+                            },
                             success: function (data) {
                                 console.log(data);
                                 debugger;
