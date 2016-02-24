@@ -12,7 +12,7 @@ Once users are authorized they can send requests to the dentists or to the admin
 ##Admin
 Can register new dentists to the system and can manage informations about the posts, doctors etc.
 
-##Doctors
+##Dentists
 Can review all their patients and attach documents for them and can accept requests from patients and review all their
 
 ### Technologies
