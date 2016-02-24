@@ -11,6 +11,7 @@
         public string Content { get; set; }
 
         [Display(Name ="Upload File")]
+        [Required]
         public HttpPostedFileBase File { get; set; }
     }
 }

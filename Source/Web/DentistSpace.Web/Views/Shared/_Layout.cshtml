@@ -32,6 +32,7 @@
                     {
                         <li>@Html.ActionLink("Patient requests", "Requests", "Patients", new { area = "Dentists" }, null)</li>
                         <li>@Html.ActionLink("New post", "Create", "Posts", new { area = "Dentists" }, null)</li>
+                        <li>@Html.ActionLink("Patient Documents", "Index", "Patients", new { area = "Dentists" }, null)</li>
                     }
                     @if (User.IsInRole(DentistSpace.Common.Roles.Dentist) || User.IsInRole(DentistSpace.Common.Roles.Admin))
                     {
@@ -48,6 +49,7 @@
                     {
                         <li>@Html.ActionLink("Patient requests", "Requests", "Patients", new { area = "Dentists" }, null)</li>
                         <li>@Html.ActionLink("New post", "Create", "Posts", new { area = "Dentists" }, null)</li>
+                        <li>@Html.ActionLink("Patient Documents", "Index", "Patients", new { area = "Dentists" }, null)</li>
                     }
                     @if (User.IsInRole(DentistSpace.Common.Roles.Dentist) || User.IsInRole(DentistSpace.Common.Roles.Admin))
                     {

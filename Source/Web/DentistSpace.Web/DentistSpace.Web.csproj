@@ -262,6 +262,7 @@
     <Content Include="Content\jquery-ui.structure.min.css" />
     <Content Include="Content\jquery-ui.theme.css" />
     <Content Include="Content\jquery-ui.theme.min.css" />
+    <Content Include="Scripts\jquery.form.js" />
     <Content Include="Content\kendo\fonts\DejaVu\LICENSE.txt" />
     <Content Include="Content\kendo\fonts\glyphs\KendoUIGlyphs.svg" />
     <Content Include="Content\kendo\images\back.png" />
@@ -462,6 +463,8 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Areas\Dentists\Views\Request\Index.cshtml" />
     <Content Include="Areas\Dentists\Views\Patients\Index.cshtml" />
+    <Content Include="Areas\Dentists\Views\Shared\EditorTemplates\EditPatientMedicalRecordsViewModel.cshtml" />
+    <Content Include="Areas\Dentists\Views\Shared\_MedicalRecordsPartial.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -536,6 +539,16 @@
     <Folder Include="App_Data\uploads\dentistsRequests\7\" />
     <Folder Include="App_Data\uploads\dentistsRequests\8\" />
     <Folder Include="App_Data\uploads\dentistsRequests\9\" />
+    <Folder Include="App_Data\uploads\medicalRecords\0\" />
+    <Folder Include="App_Data\uploads\medicalRecords\1\" />
+    <Folder Include="App_Data\uploads\medicalRecords\2\" />
+    <Folder Include="App_Data\uploads\medicalRecords\3\" />
+    <Folder Include="App_Data\uploads\medicalRecords\4\" />
+    <Folder Include="App_Data\uploads\medicalRecords\5\" />
+    <Folder Include="App_Data\uploads\medicalRecords\6\" />
+    <Folder Include="App_Data\uploads\medicalRecords\7\" />
+    <Folder Include="App_Data\uploads\medicalRecords\8\" />
+    <Folder Include="App_Data\uploads\medicalRecords\9\" />
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />

@@ -20,5 +20,11 @@
                 .All()
                 .Where(x => x.DentistId == dentistId && x.PatientId == patientId);
         }
+
+        public void AddNewMedicalRecord(MedicalRecord record)
+        {
+            this.medicalRecords.Add(record);
+            this.medicalRecords.Save();
+        }
     }
 }

@@ -20,7 +20,8 @@ namespace DentistSpace.Web
             bundles.UseCdn = true;
 
             bundles.Add(new ScriptBundle("~/bundles/jquery", JQueryCDN).Include(
-                        "~/Scripts/jquery-{version}.js"));
+                        "~/Scripts/jquery-{version}.js",
+                        "~/Scripts/jquery.form.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval", JQueryValidateCDN).Include(
                         "~/Scripts/jquery.validate.js"));

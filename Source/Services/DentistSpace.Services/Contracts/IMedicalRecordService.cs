@@ -6,5 +6,7 @@
     public interface IMedicalRecordService
     {
         IQueryable<MedicalRecord> GetRecordsForPatientByDentist(string patientId, string dentistId);
+
+        void AddNewMedicalRecord(MedicalRecord record);
     }
 }
