@@ -44,6 +44,11 @@
                 .Take(count);
         }
 
+        public int PublicPostsCount()
+        {
+            return this.posts.All().Where(x => x.IsPublic).Count();
+        }
+
         public IQueryable<Post> GetAllPublicByCategory(int categoryId, int count, int page)
         {
             return this.posts

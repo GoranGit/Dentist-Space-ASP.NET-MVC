@@ -1,4 +1,4 @@
-﻿@model  IEnumerable<DentistSpace.Web.Models.Posts.PostViewModel>
+﻿@model  DentistSpace.Web.Models.Home.IndexPageableModel
 
 @if (this.TempData["ErrorMessage"] != null)
 {
@@ -10,11 +10,50 @@
 <div class="row">
 </div>
 
+<div class="text-center">
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        <div class="row" id="search-row">
+            <div class="input-field col offset-s3 s4">
+                <i class="mdi-action-search prefix"></i>
+                <input type="text" name="search" id="searchInput" />
+                <label>Search</label>
+            </div>
+            <div class="col s2">
+                <button id="btnSearch" class="btn btn-search red lighten-2">Search</button>
+            </div>
+        </div>
+    }
+
+</div>
+
 @Html.DropDownList("categories", new SelectList(ViewBag.Categories, "Id", "Name"), new { onchange = "changed()" })
 
 <div id="result">
-    @Html.Partial("_PostsPartial", Model)
+    @Html.Partial("_PostsPartial", Model.Posts)
 </div>
+
+<ul class="pagination">
+    @if (Model.CurrentPage > 1)
+    {
+        <li><a href="/Home/Index/@(Model.CurrentPage - 1)">&laquo;</a></li>
+    }
+
+    @for (int i = 1; i < @Model.TotalPages + 1; i++)
+    {
+        var className = string.Empty;
+        if (@Model.CurrentPage == i)
+        {
+            className = "active";
+        }
+        <li class=@className><a href="/Home/Index/@i">@i</a></li>
+    }
+
+    @if (Model.CurrentPage < Model.TotalPages)
+    {
+        <li><a href="/Home/Index/@(Model.CurrentPage + 1)">&raquo;</a></li>
+    }
+</ul>
 
 @section scripts{
     <script>

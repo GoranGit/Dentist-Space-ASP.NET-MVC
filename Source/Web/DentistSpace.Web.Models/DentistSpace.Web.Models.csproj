@@ -113,6 +113,7 @@
     <Compile Include="Account\VerifyCodeViewModel.cs" />
     <Compile Include="AutoCompleteModels\DentistAutoCompleteResponseModel.cs" />
     <Compile Include="BaseModels\IdentifierBaseModel.cs" />
+    <Compile Include="Home\IndexPageableModel.cs" />
     <Compile Include="Home\MainBannerViewModel.cs" />
     <Compile Include="MedicalRecords\MedicalRecordViewModel.cs" />
     <Compile Include="MedicalRecords\EditPatientMedicalRecordsViewModel.cs" />

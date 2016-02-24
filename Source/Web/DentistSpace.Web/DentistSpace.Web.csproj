@@ -243,6 +243,7 @@
     <Compile Include="Controllers\BannerController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CommunityController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
@@ -527,6 +528,7 @@
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Areas\Dentists\Views\Shared\EditorTemplates\EditPatientRequestViewModel.cshtml" />
     <Content Include="Views\Community\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\dentistsRequests\0\" />
