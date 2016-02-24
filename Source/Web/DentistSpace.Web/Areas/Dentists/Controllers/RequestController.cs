@@ -36,10 +36,13 @@
             if (request.File.ContentLength > 0)
             {
                 var file = request.File;
+                var fileExtension = Path.GetExtension(file.FileName);
+
                 var dentistRequest = new DentistRequest()
                 {
                     Content = request.Content,
-                    UserId = this.User.Identity.GetUserId()
+                    UserId = this.User.Identity.GetUserId(),
+                    Extension = fileExtension
                 };
 
                 this.dentistRequests.AddRequest(dentistRequest);
@@ -47,7 +50,7 @@
                 var folder = dentistRequest.Id % 10;
                 var realFileName = dentistRequest.FileName.ToString();
 
-                var path = Path.Combine(this.Server.MapPath(RequestsPath + folder), realFileName + Path.GetExtension(file.FileName));
+                var path = Path.Combine(this.Server.MapPath(RequestsPath + folder), realFileName + fileExtension);
                 file.SaveAs(path);
             }
             else

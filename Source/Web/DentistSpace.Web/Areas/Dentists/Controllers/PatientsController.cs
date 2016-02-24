@@ -6,6 +6,7 @@
     using Common;
     using DentistSpace.Data.Models;
     using DentistSpace.Services.Contracts;
+    using Models.MedicalRecords;
     using Infrastructure.Mapping;
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
@@ -76,6 +77,46 @@
             var fileContents = Convert.FromBase64String(base64);
 
             return this.File(fileContents, contentType, fileName);
+        }
+
+        public ActionResult Index()
+        {
+            this.ViewBag.Title = "Patients requests";
+            return this.View();
+        }
+
+        public ActionResult Patient_Read([DataSourceRequest]DataSourceRequest request)
+        {
+            IQueryable<EditPatientMedicalRecordsViewModel> patienRecords = this.dentists.GetDentistById(this.User.Identity.GetUserId()).Patients.AsQueryable<Patient>().To<EditPatientMedicalRecordsViewModel>();
+
+            DataSourceResult result = patienRecords.ToDataSourceResult(request, patient => new {
+                Id = patient.Id,
+                FirstName = patient.FirstName,
+                LastName = patient.LastName,
+                MedicalRecords = patient.MedicalRecords
+            });
+
+            return this.Json(result);
+        }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Patient_Update([DataSourceRequest]DataSourceRequest request, EditPatientRequestViewModel patientRequest)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var entity = this.requests.GetById(patientRequest.Id);
+                entity.IsAccepted = patientRequest.IsAccepted;
+
+                string dentistId = this.User.Identity.GetUserId();
+
+                Dentist dentist = this.dentists.GetDentistById(dentistId);
+
+                this.patients.CreateNewPatient(patientRequest.UserId, dentist);
+
+                this.requests.AcceptPatientRequest(entity);
+            }
+
+            return this.Json(new[] { patientRequest }.ToDataSourceResult(request, this.ModelState));
         }
     }
 }

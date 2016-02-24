@@ -66,6 +66,7 @@
     <Compile Include="Contracts\IBannerService.cs" />
     <Compile Include="Contracts\ICategoryService.cs" />
     <Compile Include="Contracts\IDentistRequestService.cs" />
+    <Compile Include="Contracts\IMedicalRecordService.cs" />
     <Compile Include="Contracts\IPatientService.cs" />
     <Compile Include="Contracts\IPostService.cs" />
     <Compile Include="Contracts\IRequestService.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Contracts\IDentistService.cs" />
     <Compile Include="DentistRequestService.cs" />
     <Compile Include="DentistService.cs" />
+    <Compile Include="MedicalRecordService.cs" />
     <Compile Include="PatientService.cs" />
     <Compile Include="PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

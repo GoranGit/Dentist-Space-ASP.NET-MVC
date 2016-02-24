@@ -25,6 +25,9 @@
 
         public Guid FileName { get; set; }
 
+        [Required]
+        public string Extension { get; set; }
+
         public virtual User User { get; set; }
     }
 }
