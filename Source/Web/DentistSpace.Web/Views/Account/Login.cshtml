@@ -10,7 +10,7 @@
             @Html.AntiForgeryToken()
             <div class="row">
                 <div class="input-field col s12 center">
-                    <img src="images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">
+                    @*<img src="images/login-logo.png" alt="" class="circle responsive-img valign profile-image-login">*@
                     <h4>@ViewBag.Title</h4>
                 </div>
             </div>
@@ -25,7 +25,7 @@
             <div class="row margin">
                 <div class="input-field col s12">
                     <i class="mdi-action-lock-outline prefix"></i>
-                    @Html.TextBoxFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password)
                     @Html.LabelFor(m => m.Password)
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "red" })
                 </div>
@@ -54,11 +54,11 @@
                 <a href="/Account/ForgotPassword">Forgot password ?</a>
             </div>
         </div>
-        <div class="row">
+        @*<div class="row">
             <section id="socialLoginForm">
                 @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
             </section>
-        </div>
+        </div>*@
     </div>
 </div>
 @section Scripts {

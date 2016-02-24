@@ -16,14 +16,13 @@
 
         public string Title { get; set; }
 
-        //TODO HTML Sanitizer
         public string Content { get; set; }
 
         public string UserName { get; set; }
 
         public string UserDetailsLink { get; set; }
 
-        public DateTime CreatedOn { get; set; }
+        public string CreatedOn { get; set; }
 
         public string ImageUrl
         {
@@ -73,7 +72,9 @@
                 .ForMember(x => x.UserName, opt => opt.MapFrom(x => x.Dentist.User.FirstName + " " + x.Dentist.User.LastName))
                 .ForMember(x => x.UserDetailsLink, opt => opt.MapFrom(x => "/Dentists/Details/" + x.DentistId))
                 .ForMember(x => x.UserAvatar, opt => opt.MapFrom(x => x.Dentist.User.Avatar))
-                .ForMember(x => x.Content, opt => opt.MapFrom(x => (x.Content.Length > 300 ? x.Content.Substring(0, 300) + " ..." : x.Content)));
+                .ForMember(x => x.Content, opt => opt.MapFrom(x => (x.Content.Length > 300 ? x.Content.Substring(0, 300) + " ..." : x.Content)))
+                .ForMember(x => x.CreatedOn, opt => opt.MapFrom(x => x.CreatedOn.ToString("MMMM MM,yyyy")));
+            ;
         }
     }
 }
