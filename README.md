@@ -10,10 +10,10 @@ Can review all public posts posted by dentists and register as a users to the sy
 Once users are authorized they can send requests to the dentists or to the administrator of the system to become a patients or dentists properly.
 
 ##Admin
-Can register new dentists to the system and can manage informations about their own posts, doctors etc.
+Can register new dentists to the system and can manage their own posts, doctors etc.
 
 ##Dentists
-Can review all their patients, attach medical records, accept requests from patients, post stories and researches in the public and private as well.
+Can review all their patients, attach medical records, accept requests from patients, post stories and researches in the public and private area.
 
 ### Technologies
 
